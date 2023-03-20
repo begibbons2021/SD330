@@ -14,11 +14,25 @@
             background-image: radial-gradient(circle at 100%, #0a080c 25%, #100429 50%, #0a080c);
             color: #fefefe;
         }
+        
+        header {
+            height: 20%;
+        }
 
         #contents {
-            width: 100%;
+            font-size: clamp(1rem, 16pt, 3rem);
 
+            text-align: center;
             vertical-align: middle;
+
+            transition: all .2s ease-in-out;
+
+            margin-top: 12%;
+            margin-bottom: 12%
+        }
+
+        #contents > h2 {
+            font-size: clamp(2rem, 32pt, 4rem);
         }
 
         #navBar {           
@@ -27,8 +41,8 @@
             text-align: center;
             vertical-align: middle;
 
-            margin: -8px;
-            overflow: hidden;
+            margin-left: -8px;
+            margin-right: -8px;
         }
 
         #navBar > button {
@@ -46,27 +60,14 @@
             background-color: inherit;
             color: inherit;
             border-top: 2px solid #1e1e1e;
-            margin: -8px;
-            padding: 4px;
             
-            position: static;
-            top: 92.5%;
+            position: fixed;
+            bottom: 0%;
             width: 100%;
 
-            text-align: center;
-        }
-
-        .selected {
-            font-size: 16pt;
+            font-size: clamp(.8rem, 14pt, 2rem); 
 
             text-align: center;
-            vertical-align: middle;
-
-            transition: all .2s ease-in-out;
-        }
-
-        .selected > h2 {
-            font-size: 32pt;
         }
 
         .deselected {
@@ -82,16 +83,18 @@
             border-bottom: 4px solid #382b53 !important;
         }
 
+        button:active {
+            background-color: #382b53 !important;
+
+            transition: all .05s ease-in-out !important;
+        }
+
+        .selectedButton:active {
+            background-color: inherit !important;
+        }
+
         .selectedButton:hover {
             cursor: default;
-        }
-
-        #cognitionAndEmotion {
-            float: right;
-        }
-
-        #complexityCultureAndDesignModels {
-            float: left;
         }
 
         
@@ -104,13 +107,10 @@
     <header>
         <h1>System Design Principles</h1>
         <h2>CMPT 330 111 - Professor Tokash</h2>
-    </header>
 
-    <nav>
         <div id="navBar">
             Principle Categories:<br>
-            <button id="keyPrinciplesButton" onclick="switchToKeyPrinciples();" class="selectedButton"
-            disabled>
+            <button id="keyPrinciplesButton" onclick="switchToKeyPrinciples();" class="selectedButton" disabled>
                 Key Principles</button>
             <button id="usabilityButton" onclick="switchToUsability();">
                 Usability</button>
@@ -121,7 +121,8 @@
             <button id="ethicsAndEmotionsButton" onclick="switchToEthicsAndEmotions();">
                 Ethics and Emotions</button>
         </div>
-    </nav>
+    </header>
+
     
     <main>
 
@@ -186,7 +187,6 @@
     </main>
 
     <footer>
-        <br>
         <div id="footerBar">
             <p><small> &copy; Brendan Gibbons - 03/20/23 </small></p>
         </div>
