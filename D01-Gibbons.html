@@ -1,4 +1,16 @@
 <!DOCTYPE html>
+
+<!--
+    Brendan Gibbons
+    CMPT 330 111
+    Professor Tokash
+
+    March 10, 2023
+
+    BG Design Principles
+
+-->
+
 <html lang='en'>
 
 <head>
@@ -16,23 +28,22 @@
         }
         
         header {
-            height: 20%;
+            height: 15%;
         }
 
-        #contents {
-            font-size: clamp(1rem, 16pt, 3rem);
+        #contents > div {
+            font-size: 16pt;
 
             text-align: center;
             vertical-align: middle;
 
             transition: all .2s ease-in-out;
 
-            margin-top: 12%;
             margin-bottom: 12%
         }
 
-        #contents > h2 {
-            font-size: clamp(2rem, 32pt, 4rem);
+        #contents > div > h2 {
+            font-size: 32pt;
         }
 
         #navBar {           
@@ -65,7 +76,7 @@
             bottom: 0%;
             width: 100%;
 
-            font-size: clamp(.8rem, 14pt, 2rem); 
+            font-size: 14pt; 
 
             text-align: center;
         }
@@ -96,9 +107,6 @@
         .selectedButton:hover {
             cursor: default;
         }
-
-        
-
 
     </style>
 </head>
