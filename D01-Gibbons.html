@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset="utf-8">
+    <title>Brendan Gibbons - System Design Principles</title>
+
+    <style>
+        :root {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+            word-wrap: break-word;
+
+            background-image: radial-gradient(circle at 100%, #0a080c 25%, #100429 50%, #0a080c);
+            color: #fefefe;
+        }
+
+        #contents {
+            width: 100%;
+
+            vertical-align: middle;
+        }
+
+        #navBar {           
+            background-color: #1e1e1e;
+
+            text-align: center;
+            vertical-align: middle;
+
+            margin: -8px;
+            overflow: hidden;
+        }
+
+        #navBar > button {
+            background-color: inherit;
+            color: inherit;
+            border: 0px none;
+            font-family: inherit;
+
+            vertical-align: middle;
+
+            transition: all .2s ease-in-out;
+        }
+
+        #footerBar {
+            background-color: inherit;
+            color: inherit;
+            border-top: 2px solid #1e1e1e;
+            margin: -8px;
+            padding: 4px;
+            
+            position: static;
+            top: 92.5%;
+            width: 100%;
+
+            text-align: center;
+        }
+
+        .selected {
+            font-size: 16pt;
+
+            text-align: center;
+            vertical-align: middle;
+
+            transition: all .2s ease-in-out;
+        }
+
+        .selected > h2 {
+            font-size: 32pt;
+        }
+
+        .deselected {
+            display: none;
+        }
+
+        .selectedButton {
+            border-bottom: 4px solid #382b53 !important;
+        }
+        
+        button:hover {
+            cursor: pointer;
+            border-bottom: 4px solid #382b53 !important;
+        }
+
+        .selectedButton:hover {
+            cursor: default;
+        }
+
+        #cognitionAndEmotion {
+            float: right;
+        }
+
+        #complexityCultureAndDesignModels {
+            float: left;
+        }
+
+        
+
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>System Design Principles</h1>
+        <h2>CMPT 330 111 - Professor Tokash</h2>
+    </header>
+
+    <nav>
+        <div id="navBar">
+            Principle Categories:<br>
+            <button id="keyPrinciplesButton" onclick="switchToKeyPrinciples();" class="selectedButton"
+            disabled>
+                Key Principles</button>
+            <button id="usabilityButton" onclick="switchToUsability();">
+                Usability</button>
+            <button id="accessibilityAndCultureButton" onclick="switchToAccessibilityAndCulture();">
+                Accessibility and Cultural Sensitivity</button>
+            <button id="uxButton" onclick="switchToUX();">
+                User Experience</button>
+            <button id="ethicsAndEmotionsButton" onclick="switchToEthicsAndEmotions();">
+                Ethics and Emotions</button>
+        </div>
+    </nav>
+    
+    <main>
+
+        <div id="contents">
+            <div id="keyPrinciples" class="selected">
+                <h2>Key Principles:</h2>
+                <p>Visibility</p>
+                <p>Consistency</p>
+                <p>Feedback</p>
+                <p>Constraints</p>
+                <p>Affordances</p>
+                <p>Accessibility</p>
+            </div>
+            
+            <div id="usability" class="deselected">
+                <h2>General Usability:</h2>
+                <p>No manual should be necessary</p>
+                <p>Provide enough options, but not too many</p>
+                <p>Options should be relevant and readily available</p>
+                <p>Provide feedback for actions</p>
+                <p>Use easily recognizable affordances and signifiers</p>
+                <p>Create a consistent, understandable conceptional model</p>
+                <p>Present information neatly, concisely, and in chunks</p>
+                <p>Do not overwhelm users with information</p>
+                </ul>
+            </div>
+            
+            <div id="accessibilityAndCulture" class="deselected">
+                <h2>Accessibility and Cultural Sensitivity:</h2>
+                <p>Show sensitivity to your audience's needs and views</p>
+                <p>Follow the target audience's social norms</p>
+                <p>Use colors and layouts that meet user expectations</p>
+                <p>Design with screen readers and text scaling in mind</p>
+                <p>Understand cognition's impacts on usability</p>
+                <p>Adjust for multiple learning styles</p>
+                <p>Use multiple forms of indicators as needed</p>
+                <p>Provide easily accessible documentation and help pages</p>
+            </div>
+            
+            <div id="userExperience" class="deselected">
+                <h2>User Experience:</h2>
+                <p>Design with multitasking in mind</p>
+                <p>Relate a system's concepts together</p>
+                <p>Systems should not be intrusive, but still be ever-ready</p>
+                <p>Do not assume what users need; investigate first</p>
+                <p>Use metadata to help users organize and remember things</p>
+                <p>Let users prioritize the features they need</p>
+                <p>Appeal to the user's senses</p>
+            </div>
+            
+            <div id="ethicsAndEmotions" class="deselected">
+                <h2>Ethics and Emotions:</h2>
+                <p>Use persuasion... with care!</p>
+                <p>Show empathy</p>
+                <p>Understand the user's relationship to the system</p>
+                <p>Only collect data which is necessary</p>
+                <p>Provide transparency</p>
+                <p>Gather and respond to user feedback</p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <br>
+        <div id="footerBar">
+            <p><small> &copy; Brendan Gibbons - 03/20/23 </small></p>
+        </div>
+    </footer>
+
+    <script>
+
+        function switchToKeyPrinciples() {            
+            pageSwap("KeyPrinciples");
+        }
+
+        function switchToUsability() {
+            pageSwap("Usability");
+        }
+
+        function switchToAccessibilityAndCulture() {
+            pageSwap("AccessibilityAndCulture");
+        }
+
+        function switchToUX() {
+            pageSwap("UX");
+        }
+
+        function switchToEthicsAndEmotions() {
+            pageSwap("EthicsAndEmotions");
+        }
+
+        function pageSwap(menuOption) {
+
+            var selectedItem = document.getElementsByClassName("selected");
+            var selectedButton = document.getElementsByClassName("selectedButton");
+            selectedItem[0].classList.add("deselected");
+            selectedItem[0].classList.remove("selected");
+
+            selectedButton[0].removeAttribute("disabled");
+            selectedButton[0].classList.remove("selectedButton");
+
+            var newSelection;
+            var newSelectionButton;
+
+            switch (menuOption) {
+                case "KeyPrinciples":           newSelection = document.getElementById("keyPrinciples");
+                                                newSelectionButton = document.getElementById("keyPrinciplesButton");
+                                                break;
+                case "Usability":               newSelection = document.getElementById("usability");
+                                                newSelectionButton = document.getElementById("usabilityButton");
+                                                break;
+                case "AccessibilityAndCulture": newSelection = document.getElementById("accessibilityAndCulture");
+                                                newSelectionButton = document.getElementById("accessibilityAndCultureButton");   
+                                                break;
+                case "UX":                      newSelection = document.getElementById("userExperience");
+                                                newSelectionButton = document.getElementById("uxButton");
+                                                break;
+                case "EthicsAndEmotions":       newSelection = document.getElementById("ethicsAndEmotions");
+                                                newSelectionButton = document.getElementById("ethicsAndEmotionsButton");
+                                                break;
+            }
+
+            newSelection.classList.remove("deselected");
+            newSelection.classList.add("selected");
+
+            newSelectionButton.setAttribute("disabled", null);
+            newSelectionButton.classList.add("selectedButton");
+
+            console.log("The " + menuOption + " screen is now being displayed.");
+        }
+        
+        
+    </script>
+</body>
+
+</html>
