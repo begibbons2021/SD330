@@ -92,11 +92,24 @@
             background-color: inherit;
             color: inherit;
             border: 0px none;
+            border-bottom: 1px ridge #fefefe;
             font-family: inherit;
 
             vertical-align: middle;
 
             transition: all .2s ease-in-out;
+        }
+
+        .selectedButton {
+            border-bottom: 4px solid #382b53 !important;
+        }
+
+        .selectedButton:active {
+            background-color: #1e1e1e !important;
+        }
+
+        .selectedButton:hover {
+            cursor: default !important;
         }
 
         #navBar > button:hover {
@@ -105,22 +118,12 @@
         }
 
         #navBar > button:active {
-            background-color: #382b53 !important;
+            background-color: #382b53;
 
             transition: all .05s ease-in-out !important;
         }
 
-        .selectedButton {
-            border-bottom: 4px solid #382b53 !important;
-        }
-
-        .selectedButton:active {
-            background-color: inherit !important;
-        }
-
-        .selectedButton:hover {
-            cursor: default;
-        }
+        
 
     </style>
 </head>
