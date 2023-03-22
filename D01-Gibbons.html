@@ -37,8 +37,6 @@
         #contents > div {
             font-size: 16pt;
 
-            margin-bottom: 15%;
-
             text-align: center;
             vertical-align: middle;
 
@@ -128,7 +126,7 @@
     </style>
 </head>
 
-<body>
+<body onload="scaleContentsBox();" onresize="scaleContentsBox();">
     <header>
         <h1>System Design Principles</h1>
         <h2>CMPT 330 111 - Professor Tokash</h2>
@@ -307,7 +305,26 @@
             console.log("The " + menuOption + " screen is now being displayed.");
         }
         
-        
+        /**
+         * Adds margin space to the contents box so that content is not cut off
+         * by the footer.
+         * 
+         * Upon load of the page and when the viewport of the page is changed, 
+         * this function should be called to ensure all content is visible.
+         */ 
+        function scaleContentsBox() {
+
+            var contents = document.getElementById("contents");
+            var footer = document.getElementById("footerBar");
+
+            contents.style.marginBottom = "calc("+ footer.scrollHeight.toString() + "px + 2%)";
+            console.log("Contents box's bottom margin was scaled successfully");
+
+            // I referred to this for more information on the height functions:
+            // https://www.geeksforgeeks.org/how-to-get-the-rendered-height-of-an-element/
+
+        }
+
     </script>
 </body>
 
