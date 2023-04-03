@@ -20,26 +20,34 @@
     <style>
         :root {
             
-            background-image: radial-gradient(circle at 100%, #1e1e1e 65%, #2e2e2e);
-            color: #fefefe;
+            /* background-image: radial-gradient(circle at 100%, #1e1e1e 65%, #2e2e2e); */
+            color: black;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
                 Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
 
-        body {
-            max-height: 100vh;
-        }
-
         header {
-            height: 15vh;
+            position: fixed;
+
+            width: 100%;
+            height: 15dvh;
+            top: 0;
         }
 
         main {
-            height: 70dvh;
+            display: flex;
+            align-items: center;
+
+
+            height: 80dvh;
         }
 
         footer {
-            vertical-align: middle;
+            position: fixed;
+
+            width: 100%;
+            height: 5dvh;
+            bottom: 0;
         }
 
         /* Class-defined CSS Styles */
@@ -74,7 +82,7 @@
             border: 2px solid #000000;
             border-radius: 4px;
             color: #fefefe;
-            height: 3.5%;
+            height: calc(inherit - .25%);
             padding: 4px;
 
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
@@ -256,10 +264,108 @@
         }
 
         #credits {
-
             float: right;
 
             text-align: right;
+        }
+
+
+
+        #controlBar > button {
+            height: 95%;
+
+            vertical-align: middle;
+        }
+
+
+
+        #informationBar {
+            display: flex;
+            vertical-align: top;
+
+            width: 100%;
+            height: 5%;
+        }
+
+        #timeText {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #screen {
+            height: inherit;
+            width: inherit;
+        }
+        
+        #screenContents {
+            display: contents;
+            
+            position: relative;
+            top: 5%;
+            left: 0%;
+
+            height: 90%;
+            width: 100%;
+
+            vertical-align: middle;
+
+            overflow: scroll;
+            
+        }
+
+        .leftGrid {
+            float: left;
+            vertical-align: middle;
+
+            width: 45%;
+            height: fit-content;
+        }
+
+        .rightGrid {
+            float: right;
+            vertical-align: middle;
+
+            width: 45%;
+            height: fit-content;
+        }
+
+        #calendar {
+
+        }
+        
+        #controlBar {
+            display: flex;
+            align-items: end;
+
+            width: 100%;
+            height: clamp(2rem, 5%, 8rem);
+
+            background-color: #000000;
+
+        }
+
+        .hidden {
+            opacity: 0%;
+        }
+
+        .grid {
+            border: 1px solid limegreen;
+        }
+
+        .appBlock {
+            width: 2%;
+            height: 2%;
+
+            text-align: center;
+        }
+
+        .appIcon {
+            width: 50%;
+        }
+
+        #menu {
+            
+            vertical-align: middle;
         }
         
     </style>
@@ -281,7 +387,7 @@
             <div id="tempBox">
                 <span id="temperatureBoxText" title="Obtained from the NWS KPOU observation center">
                     Getting the temperature...</span>
-                <span id="timeText">0:00:00 am</span>
+                <!-- <span id="timeText">0:00:00 am</span> -->
             </div>
 
             <!-- Power Buttons for Each Component -->
@@ -297,26 +403,99 @@
             <br style="clear: both;">
 
         </div>
-    </nav>
+    </nav> 
 
     <main>
 
+        <div id="screen">
+        
+            <div id="informationBar">
+                <span id="timeText">0:00:00 am</span>
+            </div>
+
+            <div id="screenContents">
+                <div id="home">
+                    <div id="calendar" class="leftGrid grid">
+                        <button>Button</button><span>Text</span><button>Button</button>
+                    </div>
+        
+                    <div id="menu" class="rightGrid grid">
+        
+        
+                        <table id="menuAppIcons">
+                            <tr>
+                                <td class="appBlock">
+                                    <img src="img/Spotify_Logo_RGB_Green.png" alt="Spotify" class="appIcon"><br>
+                                    <span>Spotify</span>
+                                </td>
+                                <td class="appBlock">
+                                    <img src="img/Sun.png" alt="Weather" class="appIcon"><br>
+                                    <span>Weather</span>
+                                </td>
+                                <td class="appBlock">
+                                    <img src="img/Tasks.png" alt="Tasks" class="appIcon"><br>
+                                    <span>Tasks</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="appBlock">
+                                    <img src="img/Internet.png" alt="Web Browser" class="appIcon"><br>
+                                    <span>Web Browser</span>
+                                </td>
+                                <td class="appBlock">
+                                    <img src="img/Timer.png" alt="Timer" class="appIcon"><br>
+                                    <span>Timer</span>
+                                </td>
+                                <td class="appBlock">
+                                    <img src="img/TV.png" alt="Television" class="appIcon"><br>
+                                    <span>Television</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="appBlock">
+                                    <img src="img/Settings.png" alt="Settings" class="appIcon"><br>
+                                    <span>Settings</span>
+                                </td>
+                                <td class="appBlock"> </td>
+                                <td class="appBlock"> </td>
+                            </tr>
+                        </table>
+                    </div>
+        
+                    <br style="clear: both;">
+                </div>
+            </div>
+        
+        
+        
+        
+            <div id="controlBar">
+                <button>Back</button>
+                <button>Home</button>
+                <button>Open Fridge</button>
+        
+                <button style="float: right;">Display Power</button>
+                <br style="clear: right;">
+            </div>
+        
+        </div>
+
         <!-- Fridge -->
-        <div id="fridge">
+        <!-- <div id="fridge">
             <img id="fridgeImage" src="https://i.pinimg.com/originals/ce/53/20/ce5320d6c5c0473084181cc6e99547f4.png" 
                 alt="An image of a fridge">
         </div>
         
-        <!-- TV and Browser -->
+        <!- TV and Browser ->
         <div id="entertainmentColumn">
 
-            <!-- TV Set -->
+            <!- TV Set ->
             <div id="televisionSet">
                 <div id="televisionImage"><iframe src="https://youtube.com/embed/jfKfPfyJRdk"></iframe></div>
                 &#x1f7e2;
             </div>
 
-            <!-- Browser/Search Box -->
+            <!- Browser/Search Box ->
             <div id="browser">
                 <img id="googleLogo" src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
                     alt="Google Search Logo"><br>
@@ -328,7 +507,7 @@
 
         <br style="clear: both;">
         
-    </main>
+    </main> -->
     
     <footer>
         <div id="footerContents">
@@ -343,6 +522,7 @@
             <br style="clear: both;">
         </div>
     </footer>
+
 
     <script>
         // Global variables for the state of the three elements
