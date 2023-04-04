@@ -27,19 +27,8 @@
         }
 
         header {
-            position: fixed;
-
             width: 100%;
             height: 15dvh;
-            top: 0;
-        }
-
-        main {
-            display: flex;
-            align-items: center;
-
-
-            height: 80dvh;
         }
 
         footer {
@@ -265,14 +254,13 @@
 
         #credits {
             float: right;
-
             text-align: right;
         }
 
 
 
         #controlBar > button {
-            height: 95%;
+            height: 100%;
 
             vertical-align: middle;
         }
@@ -280,37 +268,43 @@
 
 
         #informationBar {
-            display: flex;
-            vertical-align: top;
-
             width: 100%;
-            height: 5%;
+            height: 2%;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+
+            padding: .5% 0% .5% 0%;
         }
 
         #timeText {
-            margin: 0px;
-            padding: 0px;
+            padding-inline-start: 1%;
+        }
+
+        #fridgeDisplayUnit {
+            width: 100%;
         }
 
         #screen {
-            height: inherit;
-            width: inherit;
+            height: 100%;
+            width: 100%;
+
+            background-color: #1e1e1e;
+            color: #fefefe;
         }
         
         #screenContents {
-            display: contents;
+            display: flex;
+            flex-direction: row;
             
             position: relative;
-            top: 5%;
+            top: 2%;
             left: 0%;
 
             height: 90%;
-            width: 100%;
-
-            vertical-align: middle;
-
-            overflow: scroll;
-            
+   
         }
 
         .leftGrid {
@@ -318,7 +312,9 @@
             vertical-align: middle;
 
             width: 45%;
-            height: fit-content;
+            height: 95%;
+
+            margin-left: 1%;
         }
 
         .rightGrid {
@@ -326,19 +322,40 @@
             vertical-align: middle;
 
             width: 45%;
-            height: fit-content;
+            height: 95%;
+            margin-right: 1%;
         }
 
         #calendar {
+            background-color:#ffffff;
+            border-radius: 5%;
+            border-color: #1e1e1e;
 
+            color: #0a0a0a;
+
+            inset: 4px;
+
+            transition: all .1s linear;
+        }
+
+        #calendar > table {
+            width: 100%;
+            height: 80%;
+            text-align: center;
+            border-width: 2%;
+        }
+
+        #calendar .today {
+            background-color: lightskyblue;
+            border-radius: 100%;
         }
         
         #controlBar {
-            display: flex;
-            align-items: end;
+            position:relative;
+            bottom: 0;
 
             width: 100%;
-            height: clamp(2rem, 5%, 8rem);
+            height: 7%;
 
             background-color: #000000;
 
@@ -353,25 +370,73 @@
         }
 
         .appBlock {
+            width: .333;
+            
+            border-radius: 5%;
+            
             width: 2%;
             height: 2%;
 
             text-align: center;
         }
 
+        .appBlock:hover {
+            background-color: #505050;
+            cursor: pointer;
+
+            transition: all .2s ease-in-out;
+        }
+
+        .appBlock:active {
+            background-color:#686868;
+            border-color: #1e1e1e;
+            inset: 4px;
+
+            transition: all .05s linear;
+        }
+
         .appIcon {
-            width: 50%;
+            width: 33.3333%;
         }
 
         #menu {
-            
             vertical-align: middle;
+        }
+
+        .circularControlButton {
+            border-radius: 100%;
+            padding: 0% .4% 0% .4%;
+        }
+
+        #dateAndEvents {
+            display: flex;
+            flex-direction: row;
+
+            padding-left: 5%;
+
+            
+        }
+
+        #date {
+            background-color:#fefefe;
+            border: 2px solid #1e1e1e;
+            border-top: 1rem ridge red;
+            border-radius: 10%;
+            
+            width: 15%;
+            height: 100%;
+
+            text-align: center;
+            vertical-align: middle;
+
+            font-size: clamp(100%, 3dvh, 1000%);
+            font-weight: bold;
         }
         
     </style>
 </head>
 
-<body onload="setTimers();">
+<body onload="setTimers(); scaleDisplay();" onresize="scaleDisplay();">
 
     <header>
         <div id="titleBar">
@@ -385,8 +450,8 @@
         <div id="controls">
             <!-- Time and Temperature -->
             <div id="tempBox">
-                <span id="temperatureBoxText" title="Obtained from the NWS KPOU observation center">
-                    Getting the temperature...</span>
+                <!-- <span id="temperatureBoxText" title="Obtained from the NWS KPOU observation center">
+                    Getting the temperature...</span> -->
                 <!-- <span id="timeText">0:00:00 am</span> -->
             </div>
 
@@ -405,23 +470,100 @@
         </div>
     </nav> 
 
-    <main>
+    <main id="fridgeDisplayUnit">
 
         <div id="screen">
         
             <div id="informationBar">
+                <span id="weatherConditions" title=""></span>
+                <span id="outsideWeatherDisplay" onclick="toggleTemperatureUnits();"> 
+                    <span id="temperatureBoxText" title="Obtained from the NWS KPOU observation center">
+                        Getting the temperature...</span> &#x00b0; <span class="temperatureUnits">F</span>
+                </span>
                 <span id="timeText">0:00:00 am</span>
             </div>
 
             <div id="screenContents">
                 <div id="home">
                     <div id="calendar" class="leftGrid grid">
-                        <button>Button</button><span>Text</span><button>Button</button>
+                        <table>
+                            <tr>
+                                <th>S</th>
+                                <th>M</th>
+                                <th>T</th>
+                                <th>W</th>
+                                <th>T</th>
+                                <th>F</th>
+                                <th>S</th>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>4</td>
+                                <td class="today">5</td>
+                                <td>6</td>
+                                <td>7</td>
+                                <td>8</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>10</td>
+                                <td>11</td>
+                                <td>12</td>
+                                <td>13</td>
+                                <td>14</td>
+                                <td>15</td>
+                            </tr>
+                            <tr>
+                                <td>16</td>
+                                <td>17</td>
+                                <td>18</td>
+                                <td>19</td>
+                                <td>20</td>
+                                <td>21</td>
+                                <td>22</td>
+                            </tr>
+                            <tr>
+                                <td>23</td>
+                                <td>24</td>
+                                <td>25</td>
+                                <td>26</td>
+                                <td>27</td>
+                                <td>28</td>
+                                <td>29</td>
+                            </tr>
+                            <tr>
+                                <td>30</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+
+                        <hr>
+
+                        <div id="dateAndEvents">
+                            <div id="date">
+                                5
+                            </div>
+                        </div>
+                        
+
                     </div>
         
                     <div id="menu" class="rightGrid grid">
-        
-        
                         <table id="menuAppIcons">
                             <tr>
                                 <td class="appBlock">
@@ -456,8 +598,8 @@
                                     <img src="img/Settings.png" alt="Settings" class="appIcon"><br>
                                     <span>Settings</span>
                                 </td>
-                                <td class="appBlock"> </td>
-                                <td class="appBlock"> </td>
+                                <td class=""> </td>
+                                <td class=""> </td>
                             </tr>
                         </table>
                     </div>
@@ -465,14 +607,19 @@
                     <br style="clear: both;">
                 </div>
             </div>
-        
-        
-        
+
         
             <div id="controlBar">
                 <button>Back</button>
                 <button>Home</button>
                 <button>Open Fridge</button>
+                <span id="temperatureControls">
+                    <button class="circularControlButton" onclick="adjustFridgeTemperature(-1)"> &lt; </button>
+                    <span id="fridgeTemperatureDisplay" onclick="toggleTemperatureUnits();">
+                        <span id="fridgeTemperature">33</span>&#x00b0;<span class="temperatureUnits">F</span>
+                    </span>
+                    <button class="circularControlButton" onclick="adjustFridgeTemperature(1)"> > </button>
+                </span>
         
                 <button style="float: right;">Display Power</button>
                 <br style="clear: right;">
@@ -530,6 +677,8 @@
         var televisionIsOn = false;
         var browserIsOn = false;
 
+        var useCelsiusTemperature = false; 
+
         /**
          * Sets the clock to tick every second and the temperature to update every
          * two minutes.
@@ -577,32 +726,44 @@
                 const weather = await apiResponse.json();
                 // Stores the response as an object
 
+                var outsideTemperature = weather.properties.temperature.value;
 
-                var tempInFahrenheit = Math.round(weather.properties.temperature.value * (9 / 5) + 32);
-                // Convert temperature from Celsius to Fahrenheit
 
-                if (tempInFahrenheit != undefined) {
-                    // Output the temperature to the site and logs
-                    tempBoxText.innerHTML = tempInFahrenheit + "&#x00b0; F";
-                    console.log("api.weather.gov: " + tempInFahrenheit + "* F");
-                }
-                else {
+                if (outsideTemperature == undefined) {
                     // Output an error
                     console.error("Error: Could not call api.weather.gov API.");
                     tempBoxText.innerHTML = "<em class='tempError'>No Temperature Data</em>";
                 }
-
-                tempBoxText.style.display = "block";
+                else if (!useCelsiusTemperature) {
+                    tempInFahrenheit = tempToFahrenheit(outsideTemperature);
+                    // Output the temperature to the site and logs
+                    tempBoxText.innerText = tempInFahrenheit;
+                    console.log("api.weather.gov: " + tempInFahrenheit + "* F");
+                }
+                else {
+                    tempBoxText.innerText = Math.round(outsideTemperature);
+                    console.log("api.weather.gov: " + Math.round(outsideTemperature) + "* C");
+                }
             }
             catch {
                 console.error("Error: Could not call api.weather.gov API.");
                 // Displays an error in standard error output.
-                
 
                 tempBoxText.innerHTML = "<em class='tempError'>No Temperature Data</em>";
-                tempBoxText.style.display = "block";
+                tempBoxText.style.display = "inline";
             }
 
+        }
+
+        function tempToFahrenheit(tempInCelsius) {
+            
+            return Math.round(tempInCelsius * (9 / 5) + 32);
+                // Convert temperature from Celsius to Fahrenheit
+        }
+
+        function tempToCelsius(tempInFahrenheit) {
+            return Math.round((5/9)*(tempInFahrenheit - 32));
+            // Convert temperature from Fahrenheit to Celsius
         }
 
         /**
@@ -777,6 +938,58 @@
             alert(credits);
 
         }
+
+        function scaleDisplay() {
+            let displayUnit = document.getElementById("fridgeDisplayUnit");
+            let displayWidth = displayUnit.scrollWidth;
+
+            displayUnit.style.height = displayWidth / 2 + "px";
+
+        }
+
+        function adjustFridgeTemperature(adjustmentMagnitude) {
+            let fridgeTemp = document.getElementById("fridgeTemperature");
+
+            let fridgeTempAsNumber = parseInt(fridgeTemp.innerText);
+            let adjustmentMagnitudeAsNumber = parseInt(adjustmentMagnitude);
+
+            console.log("Adjusting the fridge's temperature by " + adjustmentMagnitudeAsNumber);
+
+            fridgeTemp.innerText = fridgeTempAsNumber + adjustmentMagnitudeAsNumber; 
+        }
+
+        function toggleTemperatureUnits() {
+            let unitRepresentation = document.getElementsByClassName("temperatureUnits");
+
+            let fridgeTemp = document.getElementById("fridgeTemperature");
+
+            if (useCelsiusTemperature) {
+                fridgeTemp.innerText = tempToFahrenheit(fridgeTemp.innerText);
+                
+                useCelsiusTemperature = false;
+                nwsApi();
+                
+                for (i in unitRepresentation) {
+                    unitRepresentation[i].innerText = "F";
+                }
+            }
+            else {
+                fridgeTemp.innerText = tempToCelsius(fridgeTemp.innerText);
+
+                useCelsiusTemperature = true;
+                nwsApi();
+
+                for (i in unitRepresentation) {
+                    unitRepresentation[i].innerText = "C";
+                }
+            }
+
+            
+
+            
+            
+        }
+
 
 
     </script>
