@@ -180,33 +180,26 @@
         /* Web Browser (Which really just acts as a search box for Google) */
 
         #browser {
-            background-color: #1e1e1e;
-            border: 2px solid #000000;
+            background-color: inherit;
+            color: inherit;
             
-            margin-top: 5%;
-            padding-top: 15%;
-            padding-bottom: 15%;
+            position: relative;
+            top: 30%;
 
-            max-height: 15vw;
+
             width: 100%;
 
             text-align: center;
             vertical-align: middle;
-
-            opacity: 0;
         }
 
         #googleLogo {
-            width: 65%;
+            shape-rendering: crispEdges;
+            width: 30%;
 
             text-align: center;
         }
 
-        #searchBar {
-            text-align: center;
-            vertical-align: middle;
-            width: 100%;
-        }
 
         #searchBarInput {
             background-color: #2e2e2e;
@@ -219,7 +212,7 @@
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
                 Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
-            max-width: 90%;
+            width: 75%;
         }
 
         #searchBarInput:hover {
@@ -238,7 +231,7 @@
         }
 
         #searchButtonButton {
-            max-width: 10%;
+            width: 5%;
         }
         
         /* Footer Contents */
@@ -293,6 +286,10 @@
 
             background-color: #1e1e1e;
             color: #fefefe;
+
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
         }
         
         #screenContents {
@@ -361,8 +358,13 @@
 
         }
 
+        .activeApp {
+            
+        }
+
         .hidden {
             opacity: 0%;
+            display: none;
         }
 
         .grid {
@@ -432,6 +434,50 @@
             font-size: clamp(100%, 3dvh, 1000%);
             font-weight: bold;
         }
+
+        #web\.app {
+            width: 100%;
+        }
+
+        #browserTabs {
+            display: flex;
+            flex-direction: row;
+            
+            background-color: #686868;
+            
+            height: 8%;
+            width: 100%;
+
+            vertical-align:middle;
+
+        }
+
+        .browserNavButton {
+            padding: .5%;
+            height: 80%;
+        }
+
+        #browserUrlBar {
+            border-radius: 5%;
+            background-color: #adadad;
+            color: #ffffff;
+
+            width: 75dvw;
+            
+            display: flex;
+            flex-direction: row;
+
+            vertical-align: middle;
+        }
+
+        #browserUrlBarInput {
+            border: none;
+            background-color: inherit;
+            color: inherit;
+
+            width: 90%;
+
+        }
         
     </style>
 </head>
@@ -484,7 +530,7 @@
             </div>
 
             <div id="screenContents">
-                <div id="home">
+                <div id="home" class="activeApp">
                     <div id="calendar" class="leftGrid grid">
                         <table>
                             <tr>
@@ -566,29 +612,30 @@
                     <div id="menu" class="rightGrid grid">
                         <table id="menuAppIcons">
                             <tr>
-                                <td class="appBlock">
-                                    <img src="img/Spotify_Logo_RGB_Green.png" alt="Spotify" class="appIcon"><br>
+                                <td class="appBlock" onclick="switchApps('spotify.app');">
+                                    <img src="img/Spotify_Logo_RGB_Green.png" alt="Spotify" class="appIcon"
+                                        ><br>
                                     <span>Spotify</span>
                                 </td>
                                 <td class="appBlock">
                                     <img src="img/Sun.png" alt="Weather" class="appIcon"><br>
                                     <span>Weather</span>
                                 </td>
-                                <td class="appBlock">
+                                <td class="appBlock" onclick="switchApps('tasks.app');">
                                     <img src="img/Tasks.png" alt="Tasks" class="appIcon"><br>
                                     <span>Tasks</span>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="appBlock">
+                                <td class="appBlock" onclick="switchApps('web.app');">
                                     <img src="img/Internet.png" alt="Web Browser" class="appIcon"><br>
                                     <span>Web Browser</span>
                                 </td>
-                                <td class="appBlock">
+                                <td class="appBlock" onclick="switchApps('timer.app');">
                                     <img src="img/Timer.png" alt="Timer" class="appIcon"><br>
                                     <span>Timer</span>
                                 </td>
-                                <td class="appBlock">
+                                <td class="appBlock" onclick="switchApps('tv.app');">
                                     <img src="img/TV.png" alt="Television" class="appIcon"><br>
                                     <span>Television</span>
                                 </td>
@@ -606,14 +653,56 @@
         
                     <br style="clear: both;">
                 </div>
+
+                <div id="spotify.app" class="hidden">
+                    <div id="albumInformation">
+                        <img >
+                    </div>
+                </div>
+
+                <div id="tasks.app" class="hidden">
+                    Welcome to Tasks
+                </div>
+
+                <div id="web.app" class="hidden">
+                    <div id="browserTabs">
+                        <img src="img/web.app/browser_home.png" alt="Home Button" class="browserNavButton">
+                        <img src="img/web.app/browser_newTab.png" alt="New Browser Tab Button" class="browserNavButton">
+                        <img src="img/web.app/browser_back.png" alt="Previous Page Button" class="browserNavButton">
+                        <img src="img/web.app/browser_forward.png" alt="Next Page Button" class="browserNavButton">
+                        <div id='browserUrlBar'> 
+                            <img src="img/web.app/browser_security_HTTPSSecure.png" alt="HTTPS Secure Connection" class="browserNavButton">
+                            <input type="text" id="browserUrlBarInput" value="https://www.google.com"> 
+                        </div>
+                        
+                        <img src="img/web.app/browser_refresh.png" alt="Refresh Button" class="browserNavButton">
+                        
+                    </div>
+                    <div id="browser">
+                        <img id="googleLogo" src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+                            alt="Google Search Logo"><br>
+                        <br>
+                        <input id="searchBarInput" type="text" title="Search Google" placeholder="Search">
+                        <button id="searchBarButton" onclick="search();">&#x1f50d; Search</button>
+                    </div>
+                </div>
+
+                <div id="tv.app" class="hidden">
+                    Welcome to Television
+                </div>
+
+                <div id="timer.app" class="hidden">
+                    Welcome to Timer
+                </div>
             </div>
 
         
             <div id="controlBar">
-                <button>Back</button>
-                <button>Home</button>
-                <button>Open Fridge</button>
+                <button id="backButtonControl">Back</button>
+                <button id="homeButtonControl" onclick="switchApps('home');">Home</button>
+                <button id="openFridgeToggleButton" onclick="toggleFridgeOpen();">Open Fridge</button>
                 <span id="temperatureControls">
+                    <span>Fridge Temperature: </span>
                     <button class="circularControlButton" onclick="adjustFridgeTemperature(-1)"> &lt; </button>
                     <span id="fridgeTemperatureDisplay" onclick="toggleTemperatureUnits();">
                         <span id="fridgeTemperature">33</span>&#x00b0;<span class="temperatureUnits">F</span>
@@ -621,7 +710,7 @@
                     <button class="circularControlButton" onclick="adjustFridgeTemperature(1)"> > </button>
                 </span>
         
-                <button style="float: right;">Display Power</button>
+                <button style="float: right;" onclick="toggleDisplayPower()">Display Power</button>
                 <br style="clear: right;">
             </div>
         
@@ -673,9 +762,9 @@
 
     <script>
         // Global variables for the state of the three elements
-        var fridgeIsOn = false;
-        var televisionIsOn = false;
-        var browserIsOn = false;
+        var fridgeIsOpen = false;
+        var displayIsOn = true;
+        // var browserIsOn = false;
 
         var useCelsiusTemperature = false; 
 
@@ -810,96 +899,134 @@
          * Shows and hides the fridge 
          * 
          */
-        function toggleFridgePower() {
+        function toggleFridgeOpen() {
             var button = document.getElementById("fridgePowerButton");
 
-            if (fridgeIsOn) {
-                console.log("Toggled Fridge Button to Off");
+            if (!fridgeIsOpen) {
+
+                let informationBar = document.getElementById('informationBar');
+                informationBar.classList.add('hidden');
+
+                let homeButton = document.getElementById('homeButtonControl');
+                homeButton.classList.add('hidden');
+
+                let backButton = document.getElementById('backButtonControl');
+                backButton.classList.add('hidden');
+
+                let suspendedApps = document.getElementsByClassName('activeApp');
+
+                let i = 0;
+                while (i < suspendedApps.length) {
+                    suspendedApps[i].classList.add('hidden');
+                    i++;
+                }
+
+                let screen = document.getElementById('screen');
+                screen.style.backgroundImage = 'url("img/fridgeOpen.jpeg")';
+                // https://stackoverflow.com/questions/24208607/how-do-i-use-a-local-file-as-a-background-image-with-css
+
+
+                fridgeIsOpen = true;
+
+                console.log("Toggled Fridge to Open State");
                 button.innerHTML = "&#x2b55; Fridge";
-                fridgeIsOn = false;
-
-                // Fridge becomes invisible
-                var fridge = document.getElementById("fridgeImage");
-
-                fridge.style.opacity = 0;
             }
             else {
-                console.log("Toggled Fridge Button to On");
+
+                if (displayIsOn) {
+                    let informationBar = document.getElementById('informationBar');
+                    informationBar.classList.remove('hidden');
+
+                    let homeButton = document.getElementById('homeButtonControl');
+                    homeButton.classList.remove('hidden');
+
+                    let backButton = document.getElementById('backButtonControl');
+                    backButton.classList.remove('hidden');
+
+                    let suspendedApps = document.getElementsByClassName('activeApp');
+
+                    let i = 0;
+                    while (i < suspendedApps.length) {
+                        suspendedApps[i].classList.remove('hidden');
+                        i++;
+                    }
+                }
+
+                let screen = document.getElementById('screen');
+                screen.style.backgroundImage = 'none';
+
+                fridgeIsOpen = false;
+
+                console.log("Toggled Fridge to Closed State");
                 button.innerHTML = "&#x1f7e2; Fridge";
-                fridgeIsOn = true;
-
-                // Fridge becomes visible
-                var fridge = document.getElementById("fridgeImage");
-
-                fridge.style.opacity = 1;
             }
-            
+
         }
 
-        /**
-         * Shows and hides the television set 
-         * 
-         */
-        function toggleTelevisionPower() {
-            var button = document.getElementById("televisionPowerButton");
+        // /**
+        //  * Shows and hides the television set 
+        //  * 
+        //  */
+        // function toggleTelevisionPower() {
+        //     var button = document.getElementById("televisionPowerButton");
 
-            if (televisionIsOn) {
-                console.log("Toggled Television Button to Off");
-                button.innerHTML = "&#x2b55; Television";
-                televisionIsOn = false;
+        //     if (televisionIsOn) {
+        //         console.log("Toggled Television Button to Off");
+        //         button.innerHTML = "&#x2b55; Television";
+        //         televisionIsOn = false;
 
-                // Disable the television and make it invisible
-                var television = document.getElementById("televisionSet");
+        //         // Disable the television and make it invisible
+        //         var television = document.getElementById("televisionSet");
 
-                television.style.opacity = 0;
-                television.style.display = "none";
+        //         television.style.opacity = 0;
+        //         television.style.display = "none";
                 
-            }
-            else {
-                console.log("Toggled Television Button to On");
-                button.innerHTML = "&#x1f7e2; Television";
-                televisionIsOn = true;
+        //     }
+        //     else {
+        //         console.log("Toggled Television Button to On");
+        //         button.innerHTML = "&#x1f7e2; Television";
+        //         televisionIsOn = true;
 
-                // Enable the television and make it visible
-                var television = document.getElementById("televisionSet");
+        //         // Enable the television and make it visible
+        //         var television = document.getElementById("televisionSet");
 
-                television.style.opacity = 1;
-                television.style.display = "block";
-            }
+        //         television.style.opacity = 1;
+        //         television.style.display = "block";
+        //     }
             
-        }        
+        // }        
 
-        /**
-         * Shows and hides the web browser/search box 
-         * 
-         */
-        function toggleBrowserPower() {
-            var button = document.getElementById("browserPowerButton");
+        // /**
+        //  * Shows and hides the web browser/search box 
+        //  * 
+        //  */
+        // function toggleBrowserPower() {
+        //     var button = document.getElementById("browserPowerButton");
 
-            if (browserIsOn) {
-                console.log("Toggled Browser Button to Off");
-                button.innerHTML = "&#x2b55; Browser";
-                browserIsOn = false;
+        //     if (browserIsOn) {
+        //         console.log("Toggled Browser Button to Off");
+        //         button.innerHTML = "&#x2b55; Browser";
+        //         browserIsOn = false;
 
-                // Disable the browser and make it invisible
-                var browser = document.getElementById("browser");
+        //         // Disable the browser and make it invisible
+        //         var browser = document.getElementById("browser");
 
-                browser.style.opacity = 0;
-                browser.style.display = "none";
-            }
-            else {
-                console.log("Toggled Browser Button to On");
-                button.innerHTML = "&#x1f7e2; Browser";
-                browserIsOn = true;
+        //         browser.style.opacity = 0;
+        //         browser.style.display = "none";
+        //     }
+        //     else {
+        //         console.log("Toggled Browser Button to On");
+        //         button.innerHTML = "&#x1f7e2; Browser";
+        //         browserIsOn = true;
 
-                // Enable the browser and make it visible
-                var browser = document.getElementById("browser");
+        //         // Enable the browser and make it visible
+        //         var browser = document.getElementById("browser");
 
-                browser.style.opacity = 1;
-                browser.style.display = "block";
-            }
+        //         browser.style.opacity = 1;
+        //         browser.style.display = "block";
+        //     }
 
-        }
+        // }
 
         /**
          * Redirects the user to the Google Search page supplied in the search box. 
@@ -983,14 +1110,81 @@
                     unitRepresentation[i].innerText = "C";
                 }
             }
+ 
+        }
 
-            
+        function switchApps(newApp) {
+            let activeApps = document.getElementsByClassName('activeApp');
+            let appToOpen = document.getElementById(newApp)
 
-            
+            while(activeApps.length != 0) {
+                activeApps[0].classList.add('hidden')
+                activeApps[0].classList.remove('activeApp')
+            } 
+
+            appToOpen.classList.add('activeApp')
+            appToOpen.classList.remove('hidden')
             
         }
 
+        function toggleDisplayPower() {    
 
+            if (fridgeIsOpen) {
+                return;
+            }
+
+            if (displayIsOn) {
+
+                let informationBar = document.getElementById('informationBar');
+                informationBar.classList.add('hidden');
+
+                let homeButton = document.getElementById('homeButtonControl');
+                homeButton.classList.add('hidden');
+
+                let backButton = document.getElementById('backButtonControl');
+                backButton.classList.add('hidden');
+
+                let suspendedApps = document.getElementsByClassName('activeApp');
+
+                let i = 0;
+                while (i < suspendedApps.length) {
+                    suspendedApps[i].classList.add('hidden');
+                    i++;
+                }
+
+                let screen = document.getElementById('screen');
+                screen.style.backgroundColor = '#000000';
+
+                displayIsOn = false;
+            }
+            else {
+
+                let informationBar = document.getElementById('informationBar');
+                informationBar.classList.remove('hidden');
+
+                let homeButton = document.getElementById('homeButtonControl');
+                homeButton.classList.remove('hidden');
+
+                let backButton = document.getElementById('backButtonControl');
+                backButton.classList.remove('hidden');
+
+                let suspendedApps = document.getElementsByClassName('activeApp');
+
+                let i = 0;
+                while (i < suspendedApps.length) {
+                    suspendedApps[i].classList.remove('hidden');
+                    i++;
+                }
+
+                let screen = document.getElementById('screen');
+                screen.style.backgroundColor = '#1e1e1e';
+
+                displayIsOn = true;
+            }
+        }
+
+
+        
 
     </script>
 
