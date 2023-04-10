@@ -31,12 +31,21 @@
             height: 15dvh;
         }
 
-        footer {
+        #footerBar {
             position: fixed;
 
             width: 100%;
             height: 5dvh;
             bottom: 0;
+            left: 0;
+
+            background-color: #0a0a0a;
+            color: #fefefe;
+
+            display: flex;
+            flex-direction: column;
+
+            vertical-align: middle;
         }
 
         /* Class-defined CSS Styles */
@@ -170,7 +179,7 @@
         #televisionImage {
             text-align: center;
             width: 100%;
-            height: 100%;
+            height: 98%;
             border: none;
 
             overflow: hidden;
@@ -236,17 +245,12 @@
         
         /* Footer Contents */
 
-        #footerContents {
-            border-top: 3px solid #fefefe;
-            padding: 8px;
-        }
 
         #footerText {
-            float: left;
+            text-align: left;
         }
 
         #credits {
-            float: right;
             text-align: right;
         }
 
@@ -256,13 +260,16 @@
             height: 100%;
 
             vertical-align: middle;
+
+            height: 100%;
+            font-size: clamp(.05rem, 1.25dvh, 2.75rem);
         }
 
 
 
         #informationBar {
             width: 100%;
-            height: 2%;
+            height: 3.5%;
 
             display: flex;
             flex-direction: row;
@@ -274,6 +281,10 @@
 
         #timeText {
             padding-inline-start: 1%;
+        }
+
+        #weatherConditions {
+            height: 100%;
         }
 
         #fridgeDisplayUnit {
@@ -324,7 +335,7 @@
             float: right;
 
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             align-items: center;
             text-align: center;
             vertical-align: middle;
@@ -332,6 +343,11 @@
             width: 45%;
             height: 95%;
             margin-right: 1%;
+        }
+
+        .clearBreak {
+            height: 0px;
+            clear: both;
         }
 
         #calendar {
@@ -373,6 +389,8 @@
 
             background-color: #000000;
 
+            font-size: clamp(.1rem, 1.5dvh, 3rem);
+
         }
 
         .activeApp {
@@ -394,7 +412,7 @@
         }
 
         .appBlock {
-            width: .333;
+            width: 1/3;
             
             border-radius: 5%;
             
@@ -420,11 +438,16 @@
         }
 
         .appIcon {
-            width: 33.3333%;
+            width: calc((1/3) * 100%);
         }
 
         #menu {
             vertical-align: middle;
+        }
+
+        #menuAppIcons {
+            width: 100%;
+            height: 100%;
         }
 
         .circularControlButton {
@@ -559,11 +582,194 @@
             max-height: 100%;
 
         }
+
+        #tasks\.app {
+            width: 100%;
+            height: 100%;
+        }
+
+        #taskListCollectionContainer {
+            width: 100%;
+            height: 65%;
+        }
+
+        #taskListCollection {
+            width: 100%;
+            height: 100%;
+        }
+
+        #taskAddItemButton {
+            width: 10%;
+            height: 10%;
+
+            display: none;
+
+            background-image: url("img/system/add_white.png");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .selectionListBlock {
+            display: flex;
+            flex-direction: row;
+
+            background-color: #2e2e2e;
+            padding: .5%;
+            width: 100%;
+        }
+
+        .selectionListBlock:hover {
+            background-color: #505050;
+            cursor: pointer;
+
+            transition: all .2s ease-in-out;
+        }
+
+        .selectionListBlock:active {
+            background-color:#686868;
+            border-color: #1e1e1e;
+            inset: 4px;
+
+            transition: all .05s linear;
+        }
+
+        .tableListContainer {
+            overflow: hidden;
+            /* https://stackoverflow.com/questions/12597897/how-do-i-make-a-table-scrollable*/
+            overflow-y: scroll;
+        }
+
+        #currentTaskList {
+            background-color:#505050;
+            border-radius: 5%;
+            border-color: #1e1e1e;
+
+            color: #fefefe;
+
+            inset: 4px;
+
+            transition: all .1s linear;
+
+            display: flex;
+            flex-direction: column;
+            vertical-align: middle;
+            
+        }
+
+        #currentTaskList .selectionListBlock {
+            border-radius: 3%;
+        }
+
+        #currentTaskListTableContainer {
+            width: 95%;
+            height: 65%;
+            
+            display: none;
+
+            overflow: hidden;
+            /* https://stackoverflow.com/questions/12597897/how-do-i-make-a-table-scrollable*/
+            overflow-y: scroll;
+        }
+
+        #currentTaskListTable {
+            width: 100%;
+            height: 100%;
+        }
+
+        #currentTaskListTable >  tr {
+            padding: 1%;
+            border-radius: 3%;
+            width: 100%;
+        }
+
+
+        .taskChecklistItem {
+            background-color: inherit;
+            color: inherit;
+            font-family: inherit;
+            font-size: inherit;
+
+            border: none;
+
+            height: 18%;
+            width: 50%;
+        }
+
+        .taskChecklistItem > button {
+            height: 100%;
+            font-size: clamp(.25rem, 1rem, 3rem);
+            padding: clamp(.05rem, .5%, 1rem);
+        }
+
+        #tasks\.app {
+            width: 100%;
+            height: 100%;
+        }
+
+        #timer\.app {
+            width: 100%;
+            height: 100%;
+        }
+
+        #currentTimer {
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            vertical-align: middle;
+
+            background-color:#424242;
+            border-radius: 5%;
+            border-color: #1e1e1e;
+
+            color: #fefefe;
+
+            inset: 4px;
+
+            transition: all .1s linear;
+            
+        }
+
+        #timerListSet {
+
+        }
+
+        #timerListCollectionContainer {
+            width: 100%;
+            height: 65%;
+        }
+
+        #timerListCollection {
+            width: 100%;
+            height: 100%;
+        }
+
+        .timerClock {
+            font-size: clamp(1rem, 10dvh, 8rem);
+            height: 85%;
+        }
+
+        #currentTimerName {
+            height: 15%;
+        }
+
+        #currentTimerInformationContainer {
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            vertical-align: middle;
+            
+            height: 85%;
+        }
+
+
         
     </style>
 </head>
 
-<body onload="setTimers(); scaleDisplay();" onresize="scaleDisplay();">
+<body onload="scaleDisplay(); randomizeFridgeTemperature(); loadTimerLists(); loadTaskLists(); setTimers(); " 
+    onresize="scaleDisplay();">
 
     <header>
         <div id="titleBar">
@@ -578,7 +784,7 @@
         <div id="screen">
         
             <div id="informationBar">
-                <span id="weatherConditions" title=""></span>
+                <img id="weatherConditions" src="" title=""></span>
                 <span id="outsideWeatherDisplay" onclick="toggleTemperatureUnits();"> 
                     <span id="temperatureBoxText" title="Obtained from the NWS KPOU observation center">
                         Getting the temperature...</span> &#x00b0; <span class="temperatureUnits">F</span>
@@ -709,7 +915,7 @@
                         </table>
                     </div>
         
-                    <br style="clear: both;">
+                    <br class="clearBreak hidden">
                 </div>
 
                 <div id="spotify.app" class="hidden">
@@ -736,59 +942,27 @@
                 </div>
 
                 <div id="tasks.app" class="hidden">
-                    <div id="currentTaskList" class="leftGrid hidden">
-                        <table>
-                            <tr>
-                                
-                            </tr>
-                            <tr>
-
-                            </tr>
-                            <tr>
-
-                            </tr>
-                            <tr>
-
-                            </tr>
-                            <tr>
-
-                            </tr>
-                            <tr>
-
-                            </tr>
-                            <tr>
-
-                            </tr>
-                        </table>
-                    
-                        <hr id="calendarBottomDivider">
-
-
-                    
-                    
+                    <div id="currentTaskList" class="leftGrid grid">
+                        <h2 id="currentTaskListName">Select a List</h2>
+                        <div id='currentTaskListTableContainer'>
+                            <!-- https://stackoverflow.com/questions/12597897/how-do-i-make-a-table-scrollable -->
+                            <table id='currentTaskListTable'>
+                            
+                            </table>
+                        </div>
+                        <button id="taskAddItemButton" onclick="addTaskItem(document.getElementById('currentTaskListName').innerText)" title="Add a Task Item"></button>
                     </div>
                     
-                    <div id="taskListSet" class="rightGrid">
-                        <table id="taskListCollection">
-                            <tr>
-                                <td class="selectionList" onclick="switchApps('spotify.app');">
-                                    <img src="img/Spotify_Logo_RGB_Green.png" alt="Spotify" class="appIcon"><br>
-                                    <span>Spotify</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="selectionList" onclick="switchApps('web.app');">
-                                    <img src="img/Internet.png" alt="Web Browser" class="appIcon"><br>
-                                    <span>Web Browser</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class=""> </td>
-                            </tr>
-                        </table>
+                    <div id="taskListSet" class="rightGrid grid">
+                        <h2>Task Lists </h2>
+                        <div id='taskListCollectionContainer' class='tableListContainer'>
+                            <table id="taskListCollection">
+                            
+                            </table>
+                        </div>      
                     </div>
                     
-                    <br style="clear: both;">
+                    <br class="clearBreak hidden">
                 </div>
 
                 <div id="web.app" class="hidden">
@@ -815,12 +989,33 @@
                 </div>
 
                 <div id="tv.app" class="hidden">
+                    <audio id="tvPowerSound" src="audio/turnontv.mp3"></audio>
                     <iframe id="televisionImage" src="https://youtube.com/embed/jfKfPfyJRdk"></iframe>
                 </div>
 
                 <div id="timer.app" class="hidden">
-                    Welcome to Timer
+                    <div id="currentTimer" class="leftGrid grid">
+                        <audio id="timerAlarm" src="audio/alarm.mp3" preload></audio>
+                        <h2 id="currentTimerName">Select a Timer</h2>
+                        <div id='currentTimerInformationContainer'>
+                            <!-- https://stackoverflow.com/questions/12597897/how-do-i-make-a-table-scrollable -->
+                            
+                        </div>
+
+                    </div>
+                    
+                    <div id="timerListSet" class="rightGrid grid">
+                        <h2>Timers </h2>
+                        <div id='timerListCollectionContainer' class='tableListContainer'>
+                            <table id="timerListCollection">
+                    
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <br class="clearBreak hidden">
                 </div>
+
             </div>
 
         
@@ -843,47 +1038,15 @@
         
         </div>
 
-        <!-- Fridge -->
-        <!-- <div id="fridge">
-            <img id="fridgeImage" src="https://i.pinimg.com/originals/ce/53/20/ce5320d6c5c0473084181cc6e99547f4.png" 
-                alt="An image of a fridge">
-        </div>
-        
-        <!- TV and Browser ->
-        <div id="entertainmentColumn">
-
-            <!- TV Set ->
-            <div id="televisionSet">
-                <div id="televisionImage"><iframe src="https://youtube.com/embed/jfKfPfyJRdk"></iframe></div>
-                &#x1f7e2;
-            </div>
-
-            <!- Browser/Search Box ->
-            <div id="browser">
-                <img id="googleLogo" src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
-                    alt="Google Search Logo"><br>
-                <br>
-                <input id="searchBarInput" type="text">
-                <button id="searchBarButton" onclick="search();">&#x1f50d; Search</button>
-            </div>
-        </div>
-
-        <br style="clear: both;">
-        
-    -->
     </main> 
     
-    <footer>
-        <div id="footerContents">
-            <div id="footerText">
-                &copy; Brendan Gibbons - 3/10/23
-            </div>
-            <div id="credits">
-                <!-- On click, information about sources for certain information is provided -->
-                <button onclick="showCreditsAlert();">Credits</button>
-            </div>
-            
-            <br style="clear: both;">
+    <footer id="footerBar">
+        <div id="footerText">
+            &copy; Brendan Gibbons - 3/10/23
+        </div>
+        <div id="credits">
+            <!-- On click, information about sources for certain information is provided -->
+            <button onclick="showCreditsAlert();">Credits</button>
         </div>
     </footer>
 
@@ -896,6 +1059,61 @@
         var useCelsiusTemperature = false; 
         var use12HourTime = true;
         var showInformationBar = true;
+        
+
+        // Task List Defaults
+
+        var savedLists = [];
+
+
+        // https://stackoverflow.com/questions/19529403/how-can-i-loop-through-a-javascript-object-array
+        savedLists[0] = {
+                            name: "Shopping List",
+                            list: [   
+                                    {name: "Milk", isChecked: true}, 
+                                    {name: "Stewart's Ice Cream", isChecked: true},
+                                    {name: "Breakfast Sausage", isChecked: false},
+                                    {name: "Nougat", isChecked: true},
+                                    {name: "Oatmeal Cookie Mix", isChecked: true}
+                                  ],
+                            isFavorite: true
+                        };
+        savedLists[1] = {
+                            name: "Video Games for the Kids",
+                            list: [
+                                    {name: "Pokemon", isChecked: true},
+                                    {name: "Roblox Premium", isChecked: false}
+                                  ],
+                            isFavorite: false
+                        };
+
+        
+        // Timer Defaults
+
+        savedTimers = [];
+
+        savedTimers[0] = {
+                            name: "10-Minute Timer",
+                            minutes: 10,
+                            seconds: 00,
+                            timeRemaining: 600                 
+        };
+
+        savedTimers[1] = {
+                name: "30-Second Final Jepoardy",
+                minutes: 0,
+                seconds: 30,
+                timeRemaining: 30 
+        };
+
+        savedTimers[2] = {
+                name: "1-Minute Timer",
+                minutes: 1,
+                seconds: 0,
+                timeRemaining: 60 
+        };
+
+        
 
 
         /**
@@ -937,6 +1155,7 @@
             
             console.log("Attempting to call api.weather.gov API...");
             var tempBoxText = document.getElementById("temperatureBoxText");
+            var weatherConditions = document.getElementById("weatherConditions");
 
             try {
                 const apiRequest = new Request(apiURL);
@@ -948,23 +1167,31 @@
                 const weather = await apiResponse.json();
                 // Stores the response as an object
 
+                var weatherConditionsIcon = weather.properties.icon;
+                var weatherConditionsText = weather.properties.textDescription;
                 var outsideTemperature = weather.properties.temperature.value;
 
 
                 if (outsideTemperature == undefined) {
                     // Output an error
                     console.error("Error: Could not call api.weather.gov API.");
-                    tempBoxText.innerHTML = "<em class='tempError'>No Temperature Data</em>";
+                    tempBoxText.innerHTML = "<em class='tempError'>No Weather Data</em>";
                 }
                 else if (!useCelsiusTemperature) {
+                    weatherConditions.setAttribute("src", weatherConditionsIcon);
+                    weatherConditions.setAttribute("title", weatherConditionsText);
                     tempInFahrenheit = tempToFahrenheit(outsideTemperature);
+                    
                     // Output the temperature to the site and logs
                     tempBoxText.innerText = tempInFahrenheit;
-                    console.log("api.weather.gov: " + tempInFahrenheit + "* F");
+                    console.log("api.weather.gov: " + tempInFahrenheit + "* F; Conditions: " + weatherConditionsText);
                 }
                 else {
+                    weatherConditions.setAttribute("src", weatherConditionsIcon);
+                    weatherConditions.setAttribute("title", weatherConditionsText);
+
                     tempBoxText.innerText = Math.round(outsideTemperature);
-                    console.log("api.weather.gov: " + Math.round(outsideTemperature) + "* C");
+                    console.log("api.weather.gov: " + Math.round(outsideTemperature) + "* C" + weatherConditionsText);
                 }
             }
             catch {
@@ -1029,6 +1256,11 @@
 
             // Display the time
             timeText.innerText = clock;
+        }
+
+        function randomizeFridgeTemperature() {
+            let fridgeTemp = document.getElementById("fridgeTemperature");
+            fridgeTemp.innerText = Math.round(Math.random() * 15 + 31);
         }
 
         function toggle12HourTime () {
@@ -1113,40 +1345,7 @@
                 button.innerText = "Open Fridge";
             }
 
-        }
-
-        // /**
-        //  * Shows and hides the television set 
-        //  * 
-        //  */
-        // function toggleTelevisionPower() {
-        //     var button = document.getElementById("televisionPowerButton");
-
-        //     if (televisionIsOn) {
-        //         console.log("Toggled Television Button to Off");
-        //         button.innerHTML = "&#x2b55; Television";
-        //         televisionIsOn = false;
-
-        //         // Disable the television and make it invisible
-        //         var television = document.getElementById("televisionSet");
-
-        //         television.style.opacity = 0;
-        //         television.style.display = "none";
-                
-        //     }
-        //     else {
-        //         console.log("Toggled Television Button to On");
-        //         button.innerHTML = "&#x1f7e2; Television";
-        //         televisionIsOn = true;
-
-        //         // Enable the television and make it visible
-        //         var television = document.getElementById("televisionSet");
-
-        //         television.style.opacity = 1;
-        //         television.style.display = "block";
-        //     }
-            
-        // }        
+        }   
 
         /**
          * Redirects the user to the Google Search page supplied in the search box. 
@@ -1195,6 +1394,11 @@
             // Maintain 2 by 1 aspect ratio
             displayUnit.style.height = displayWidth / 2 + "px";
 
+            var footer = document.getElementById("footerBar");
+
+            displayUnit.style.marginBottom = "calc(" + footer.scrollHeight.toString() + "px + 4%)";
+            console.log("Contents box's bottom margin was scaled successfully");
+
         }
 
         function adjustFridgeTemperature(adjustmentMagnitude) {
@@ -1202,11 +1406,12 @@
 
             let fridgeTempAsNumber = parseInt(fridgeTemp.innerText);
             let adjustmentMagnitudeAsNumber = parseInt(adjustmentMagnitude);
+            
+            fridgeTemp.innerText = fridgeTempAsNumber + adjustmentMagnitudeAsNumber;
 
             console.log("Adjusting the fridge's temperature by " + adjustmentMagnitudeAsNumber);
 
-            // Add or subtract the amount to be changed.
-            fridgeTemp.innerText = fridgeTempAsNumber + adjustmentMagnitudeAsNumber; 
+            
         }
 
         function toggleTemperatureUnits() {
@@ -1323,7 +1528,6 @@
             let playPauseButton = document.getElementById('spotifyPlayButton');
             let spotifyMusicSource = document.getElementById('spotifyMusicSource');
 
-
             let logString = "spotify.app: Music ";
 
             if (!spotifyMusicSource.paused) {
@@ -1360,13 +1564,12 @@
         function tvLoadPrep () {
             let spotifyMusicSource = document.getElementById('spotifyMusicSource');
 
+            document.getElementById('tvPowerSound').play();
+
             if (!spotifyMusicSource.paused && !spotifyMusicSource.ended) {
                 spotifyMusicSource.pause();
                 console.log("tv.app: Music from other applications was paused.");
             }
-
-            
-
         }
 
         // function collapseInformationBar() {
@@ -1381,8 +1584,218 @@
         //     showInformationBar = false;
         // }
 
+        function loadTaskLists() {
+            let taskListCollection = document.getElementById('taskListCollection');
 
-        
+            let htmlString = "";
+
+            // https://stackoverflow.com/questions/7480020/for-in-loop-with-string-array-outputs-indices
+            for (list of savedLists) {
+                console.log("Loading " + list.name + " to task list");
+                htmlString += "<tr> <td class='selectionListBlock' onclick='viewTasks(\"" + list.name + "\")'> "
+                    + "<span class='taskListName'>" + list.name + "</span>"
+                    + "</td> </tr>";
+            }
+
+            taskListCollection.innerHTML = htmlString;
+        }
+
+        function viewTasks(listName) {
+            let taskChecklist = document.getElementById('currentTaskListTable');
+            let currentTaskListTableContainer = document.getElementById('currentTaskListTableContainer');
+            let currentTaskListName = document.getElementById('currentTaskListName');
+            let taskAddItemButton = document.getElementById('taskAddItemButton');
+            
+            console.log("Viewing checklist items for " + listName);
+
+            var list = savedLists.find(list => list.name === listName);
+
+            console.log("Item " + list.name);
+
+            currentTaskListName.innerText = listName;
+            let htmlString = "";
+
+            for (item of list.list) {
+                console.log("Loading " + item.name + " to task checklist");
+                
+                let itemNameInHTML = "" + item.name;
+                itemNameInHTML = itemNameInHTML.replace("'", "&apos;").replace('"', "&quot;");
+                
+                htmlString += "<tr> <td class='selectionListBlock'> "
+                    + "<input class='taskChecklistCheck' type='checkbox' value='checked'";
+
+                if (item.isChecked) {
+                    htmlString += "checked";
+                }
+
+                htmlString += "> <input class='taskChecklistItem' type='text' value='" + itemNameInHTML + "'>"
+                    + "</td> </tr>";
+            }
+
+            taskChecklist.innerHTML = htmlString;
+
+            currentTaskListTableContainer.style.display = 'block';
+            taskAddItemButton.style.display = 'block';
+        }
+
+        function addTaskItem(taskListName) {
+            let taskChecklist = document.getElementById('currentTaskListTable');
+
+            for (i of savedLists) {
+                if (i.name == taskListName) {
+                    list = i;
+                    break;
+                }
+            }
+
+            console.log("List " + list.name);
+
+            let htmlString = "";
+
+            console.log("Adding a new task to " + list.name + " to task checklist");
+            
+            let listNameInHTML = "" + list.name;
+            listNameInHTML.replace("'", "&apos;").replace('"', "&quot;");
+            
+            htmlString += "<tr> <td class='selectionListBlock'> "
+                + "<input class='taskChecklistCheck' type='checkbox' disabled>"
+                + "<input class='taskChecklistItem' type='text' value='New Item'>"
+                + "<button onclick='saveTaskItem(\"" + listNameInHTML + "\", this);'>Save</button>"
+                + "</td> </tr>";
+
+                
+            // https://stackoverflow.com/questions/1553661/how-to-get-the-onclick-calling-object
+            taskChecklist.innerHTML += htmlString;
+        }
+
+        function saveTaskItem(listName, object) {
+            let taskChecklist = document.getElementById(listName);
+            let nameElement = object.parentElement.getElementsByClassName('taskChecklistItem');
+            nameElement = nameElement[0].value;
+            
+
+            // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox
+            
+            for (i in savedLists) {
+                if (savedLists[i].name == listName) {
+                    list = savedLists[i];
+                    break;
+                }
+            }
+
+            console.log("List " + list.name);
+
+            for (item of list.list) {
+                if (item.name == nameElement) {
+                    alert(nameElement + " is already on " + listName + ".");
+                    return;
+                } 
+            }
+
+            list.list.push({name: nameElement, isChecked: false});
+
+            viewTasks(document.getElementById('currentTaskListName').innerText);
+        }
+
+        function loadTimerLists() {
+            let timerListCollection = document.getElementById('timerListCollection');
+
+            let htmlString = "";
+
+            for (timer of savedTimers) {
+                console.log("Loading " + timer.name + " to timer list");
+
+                let timerNameInHTML = "" + timer.name;
+                timerNameInHTML = timerNameInHTML.replace("'", "&apos;").replace('"', "&quot;");
+
+                htmlString += "<tr> <td class='selectionListBlock' onclick='viewTimer(\"" + timerNameInHTML + "\")'> "
+                    + "<div class='timerListName'>" + timerNameInHTML + "</div>"
+                    + "</td> </tr>";
+            }
+
+            timerListCollection.innerHTML = htmlString;
+        }
+
+        function viewTimer(timerName) {
+            let timerData = document.getElementById('currentTimer');
+            let currentTimerName = document.getElementById('currentTimerName');
+            let currentTimerInformationContainer = document.getElementById('currentTimerInformationContainer');
+            let timerStartButton = document.getElementById('timerStartButton');
+
+            console.log("Getting timer data for " + timerName);
+
+            var timer = savedTimers.find(timer => timer.name === timerName);
+
+            console.log("Timer " + timer.name);
+
+            currentTimerName.innerText = timerName;
+
+
+            let htmlString = "";
+
+            htmlString += "<span class='timerClock'> : </span>";
+            htmlString += "<button class='timerStartButton' onclick='startTimer(\"" + timer.name + "\", this);' "
+                            + "title='Start the Timer'>Start Timer</button>";
+            
+            currentTimerInformationContainer.innerHTML = htmlString;
+            timerDisplay = (currentTimerInformationContainer.getElementsByClassName('timerClock'))[0]
+
+            setTimerDisplay(timer, timerDisplay);
+
+        }
+
+        function startTimer(timerName, buttonObject) {
+            let timer = savedTimers.find(timer => timer.name === timerName);
+
+            let timerDisplay = (buttonObject.parentElement.getElementsByClassName('timerClock'))[0];
+            
+            buttonObject.innerText = "Reset Timer";
+
+            timer.timeRemaining = (timer.minutes * 60) + timer.seconds;
+
+            // https://www.w3schools.com/jsref/met_win_setinterval.asp
+            const timerId = setInterval( () =>  {
+                
+                                    timer.timeRemaining -= 1;
+                                    setTimerDisplay(timer, timerDisplay);
+
+                                    if (timer.timeRemaining == 0) {
+
+                                        let alarm = document.getElementById('timerAlarm');
+                                        
+                                        alarm.play();
+                                        console.log("Timer: " + timer.name + " finished");
+                                        // alert(timer.name + " has rang!");
+
+                                        resetTimer(timer, timerDisplay, timerId);
+                                    }
+
+
+                                }, 1000);
+
+            buttonObject.setAttribute("onclick", "resetTimer(timer, " + timerId + ")");                  
+
+            console.log("Timer: " + timer.name + " started");
+
+        }
+
+        function setTimerDisplay(timer, timerDisplay) {
+            let newSeconds = timer.timeRemaining % 60;
+            let newMinutes = Math.floor(timer.timeRemaining / 60);
+
+            timerDisplay.innerText = newMinutes.toString() + " : " + newSeconds.toString().padStart(2, '0');
+        }
+
+        function resetTimer(timer, timerDisplay, timerId) {
+            clearInterval(timerId);
+
+            timer.timeRemaining = (timer.minutes * 60) + timer.seconds;
+            setTimerDisplay(timer, timerDisplay);
+
+            viewTimer(timer.name);
+        }
+
+
 
     </script>
 
