@@ -5,7 +5,7 @@
     CMPT 330 111
     Professor Tokash
 
-    March 10, 2023
+    April 9, 2023
 
     BG The Fridge App
 
@@ -20,7 +20,6 @@
     <style>
         :root {
             
-            /* background-image: radial-gradient(circle at 100%, #1e1e1e 65%, #2e2e2e); */
             color: black;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
                 Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -48,6 +47,88 @@
             vertical-align: middle;
         }
 
+                /* Footer Contents */
+
+
+        #footerText {
+            text-align: left;
+        }
+
+        #credits {
+            text-align: right;
+        }
+
+
+
+        #controlBar > button {
+            height: 100%;
+
+            vertical-align: middle;
+
+            height: 100%;
+            font-size: clamp(.05rem, 1.25dvh, 2.75rem);
+        }
+
+        #screen {
+            height: 100%;
+            width: 100%;
+
+            background-color: #1e1e1e;
+            color: #fefefe;
+
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        
+        #screenContents {
+            display: flex;
+            flex-direction: row;
+            
+            position: relative;
+            top: 2%;
+            left: 0%;
+
+            height: 90%;
+   
+        }
+
+        .leftGrid {
+            float: left;
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            vertical-align: middle;
+
+
+            width: 45%;
+            height: 95%;
+
+            margin-left: 1%;
+        }
+
+        .rightGrid {
+            float: right;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            vertical-align: middle;
+
+            width: 45%;
+            height: 95%;
+            margin-right: 1%;
+        }
+
+        .clearBreak {
+            height: 0px;
+            clear: both;
+        }
+
+
         /* Class-defined CSS Styles */
 
         #titleBar {
@@ -65,15 +146,6 @@
         }
 
         /* Navigation and Controls */
-
-        #powerIcon {
-            width: 24px;
-            vertical-align: middle;
-        }
-
-        #powerButtons {
-            vertical-align: middle;
-        }
 
         button {
             background-color: #2e2e2e;
@@ -106,7 +178,7 @@
             vertical-align: middle;
         }
 
-        /* Temperature and Time Information */
+        /* Weather and Time Information */
 
         #tempBox {
             font-weight: bold;
@@ -117,16 +189,33 @@
 
         #temperatureBoxText {
             text-align: right;
+        } 
+
+        #informationBar {
+            width: 100%;
+            height: 3.5%;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+
+            padding: .5% 0% .5% 0%;
+        }
+
+        #timeText {
+            padding-inline-start: 1%;
+        }
+
+        #weatherConditions {
+            height: 100%;
+        }
+
+        #fridgeDisplayUnit {
+            width: 100%;
         }
 
         /* Fridge Layout - Left Side*/
-
-        #fridge {
-            max-width: 45vw;
-            /* https://stackoverflow.com/questions/36253760/how-to-limit-max-width-and-height-to-screen-size-in-css */
-            max-height: 70vh;
-            float: left;
-        }
 
         #fridgeImage {
             opacity: 0;
@@ -134,42 +223,8 @@
             max-height: inherit;
         }
 
-        /* 
-            Entertainment Layout - Right Side 
-
-            I was trying to get the scaling of the right side to work properly, but I 
-            could not get it to work the way I wanted to, hence why there is all the empty 
-            space on larger displays.
-
-            If you could offer any suggestions on how I could fix this and make other improvements,
-            that would be extremely helpful! Something about this makes me think I can do more 
-            if time is not a concern, and that this mini-project could make a good basis to learn
-            more about CSS, HTML, and Javascript, especially with some of the things I already
-            tried that I haven't before.
-        */
-
-        #entertainmentColumn {
-            float: right;
-
-            padding-right: 8px;
-
-            max-width: 50vw;
-
-            max-height: 70vh;
-        }
-
 
         /* Television Set */
-
-        #televisionSet {
-            background-color: #0a0a0a;
-            opacity: 0;
-            margin-top: 8px;
-            padding: 8px 4px 4px 4px;
-
-            max-width: 100%;
-            max-height: 40vh;
-        }
 
         #tv\.app {
             width: 100%;
@@ -243,112 +298,8 @@
             width: 5%;
         }
         
-        /* Footer Contents */
 
-
-        #footerText {
-            text-align: left;
-        }
-
-        #credits {
-            text-align: right;
-        }
-
-
-
-        #controlBar > button {
-            height: 100%;
-
-            vertical-align: middle;
-
-            height: 100%;
-            font-size: clamp(.05rem, 1.25dvh, 2.75rem);
-        }
-
-
-
-        #informationBar {
-            width: 100%;
-            height: 3.5%;
-
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-end;
-            align-items: center;
-
-            padding: .5% 0% .5% 0%;
-        }
-
-        #timeText {
-            padding-inline-start: 1%;
-        }
-
-        #weatherConditions {
-            height: 100%;
-        }
-
-        #fridgeDisplayUnit {
-            width: 100%;
-        }
-
-        #screen {
-            height: 100%;
-            width: 100%;
-
-            background-color: #1e1e1e;
-            color: #fefefe;
-
-            background-position: center;
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-        
-        #screenContents {
-            display: flex;
-            flex-direction: row;
-            
-            position: relative;
-            top: 2%;
-            left: 0%;
-
-            height: 90%;
-   
-        }
-
-        .leftGrid {
-            float: left;
-            
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            vertical-align: middle;
-
-
-            width: 45%;
-            height: 95%;
-
-            margin-left: 1%;
-        }
-
-        .rightGrid {
-            float: right;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            vertical-align: middle;
-
-            width: 45%;
-            height: 95%;
-            margin-right: 1%;
-        }
-
-        .clearBreak {
-            height: 0px;
-            clear: both;
-        }
+        /* Main Menu */
 
         #calendar {
             background-color:#ffffff;
@@ -391,10 +342,6 @@
 
             font-size: clamp(.1rem, 1.5dvh, 3rem);
 
-        }
-
-        .activeApp {
-            
         }
 
         .hidden {
@@ -730,10 +677,6 @@
             
         }
 
-        #timerListSet {
-
-        }
-
         #timerListCollectionContainer {
             width: 100%;
             height: 65%;
@@ -784,10 +727,11 @@
         <div id="screen">
         
             <div id="informationBar">
-                <img id="weatherConditions" src="" title=""></span>
+                <img id="weatherConditions" src="" title=""></img>
                 <span id="outsideWeatherDisplay" onclick="toggleTemperatureUnits();"> 
+                    <em id="weatherConditionsText"></em>
                     <span id="temperatureBoxText" title="Obtained from the NWS KPOU observation center">
-                        Getting the temperature...</span> &#x00b0; <span class="temperatureUnits">F</span>
+                        Getting the weather...</span> &#x00b0; <span class="temperatureUnits">F</span>
                 </span>
                 <span id="timeText" onclick="toggle12HourTime();">0:00:00 am</span>
             </div>
@@ -1156,6 +1100,7 @@
             console.log("Attempting to call api.weather.gov API...");
             var tempBoxText = document.getElementById("temperatureBoxText");
             var weatherConditions = document.getElementById("weatherConditions");
+            var weatherConditionsTextBox = document.getElementById('weatherConditionsText');
 
             try {
                 const apiRequest = new Request(apiURL);
@@ -1176,10 +1121,18 @@
                     // Output an error
                     console.error("Error: Could not call api.weather.gov API.");
                     tempBoxText.innerHTML = "<em class='tempError'>No Weather Data</em>";
+                    weatherConditions.setAttribute("src", "");
+                    weatherConditionsTextBox.innerText = "";
+                    weatherConditions.setAttribute("title", "");
                 }
                 else if (!useCelsiusTemperature) {
+
+                    // Outputs the weather conditions
                     weatherConditions.setAttribute("src", weatherConditionsIcon);
+                    weatherConditionsTextBox.innerText = weatherConditionsText;
                     weatherConditions.setAttribute("title", weatherConditionsText);
+
+                    // Convert the temperature to fahrenheit
                     tempInFahrenheit = tempToFahrenheit(outsideTemperature);
                     
                     // Output the temperature to the site and logs
@@ -1187,7 +1140,9 @@
                     console.log("api.weather.gov: " + tempInFahrenheit + "* F; Conditions: " + weatherConditionsText);
                 }
                 else {
+                    // Outputs the weather conditions
                     weatherConditions.setAttribute("src", weatherConditionsIcon);
+                    weatherConditionsTextBox.innerText = weatherConditionsText;
                     weatherConditions.setAttribute("title", weatherConditionsText);
 
                     tempBoxText.innerText = Math.round(outsideTemperature);
@@ -1258,11 +1213,18 @@
             timeText.innerText = clock;
         }
 
+        /**
+         * Sets the fridge to a random temperature upon loading the application.
+         */ 
         function randomizeFridgeTemperature() {
             let fridgeTemp = document.getElementById("fridgeTemperature");
             fridgeTemp.innerText = Math.round(Math.random() * 15 + 31);
         }
 
+        /**
+         * Changes system time representation between 12-hour time and 24-hour (military)
+         * time, then sets the clock to that representation
+         */ 
         function toggle12HourTime () {
 
             if (use12HourTime) {
@@ -1276,7 +1238,8 @@
         }
 
         /**
-         * Shows and hides the fridge 
+         * Hides all elements from an active application and displays a picture of a
+         * fridge to represent the fridge being open, or undoes the action to close it 
          * 
          */
         function toggleFridgeOpen() {
@@ -1371,7 +1334,7 @@
          */
         function showCreditsAlert() {
 
-            const credits = "Here is a list of links to some resources I used for reference:\n\n" 
+            const credits = ["Here is a list of links to some resources I used for reference:\n\n" 
                                 + "API Calls: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON \n\n"
                                 + "URL Encoding Function: https://stackoverflow.com/questions/332872/encode-url-in-javascript \n\n"
                                 + "National Weather Service API: https://api.weather.gov/stations/kpou/observations/latest/ \n"
@@ -1379,14 +1342,22 @@
                                 + "Guidance on height and width CSS: https://stackoverflow.com/questions/36253760/how-to-limit-max-width-and-height-to-screen-size-in-css \n\n"
                                 + "Radial Gradients: https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/radial-gradient \n\n"
                                 + "Handling iframe clipping: https://www.w3docs.com/snippets/css/how-to-scale-the-content-of-iframe-element.html \n\n"
-                                + "LoFi Girl Stream (Video Shown on TV): https://youtu.be/jfKfPfyJRdk \n\n"
-                                + "Revolve - cinematrik (song), used under Creative Commons Noncommercial Sampling Plus: https://ccmixter.org/files/hisboyelroy/430 \n"
-                                + "To learn more about CC Noncommercial Sampling Plus, read here: https://creativecommons.org/licenses/nc-sampling+/1.0/ ";
+                                + "LoFi Girl Stream (Video Shown on TV): https://youtu.be/jfKfPfyJRdk \n\n",
+                             "Revolve - cinematrik (song), used under Creative Commons Noncommercial Sampling Plus: https://ccmixter.org/files/hisboyelroy/430 \n"
+                                + "To learn more about CC Noncommercial Sampling Plus, read here: https://creativecommons.org/licenses/nc-sampling+/1.0/ \n\n"
+                                + ""];
 
-            alert(credits);
+
+            for (msg of credits) {
+                alert(msg);
+            }
 
         }
 
+        /**
+         * Sizes the fridge display and the spacing of its div so that it retains 
+         * a 2 by 1 ratio while still not being hidden by the page footer.
+         */ 
         function scaleDisplay() {
             let displayUnit = document.getElementById("fridgeDisplayUnit");
             let displayWidth = displayUnit.scrollWidth;
@@ -1401,6 +1372,11 @@
 
         }
 
+        /**
+         * Adjusts the displayed temperature of the fridge based on the argument
+         * passed, with positive numbers increasing temperature and negative 
+         * numbers decreasing it. 
+         */ 
         function adjustFridgeTemperature(adjustmentMagnitude) {
             let fridgeTemp = document.getElementById("fridgeTemperature");
 
@@ -1414,6 +1390,9 @@
             
         }
 
+        /**
+         * Changes the temperature units from celsius to fahreheit and vice versa
+         */ 
         function toggleTemperatureUnits() {
             let unitRepresentation = document.getElementsByClassName("temperatureUnits");
 
@@ -1448,6 +1427,10 @@
  
         }
 
+        /**
+         * "Switches" the app in use by changing the visible divs to the ones 
+         * associated with an application
+         */ 
         function switchApps(newApp) {
             let activeApps = document.getElementsByClassName('activeApp');
             let appToOpen = document.getElementById(newApp)
@@ -1466,6 +1449,10 @@
             
         }
 
+        /**
+         * Turns on and off the fridge display by hiding and showing the visible
+         *  elements of the active application
+         */ 
         function toggleDisplayPower() {    
 
             if (fridgeIsOpen) {
@@ -1531,17 +1518,14 @@
             let logString = "spotify.app: Music ";
 
             if (!spotifyMusicSource.paused) {
-
-                // playPauseButton.setAttribute('src', 'img/mediaControl/control_Play.png');
                 spotifyMusicSource.pause();
 
-                logString += "was paused"
+                logString += "was paused";
             }
             else {
-                // playPauseButton.setAttribute('src', 'img/mediaControl/control_Pause.png');
                 spotifyMusicSource.play();
 
-                logString += "started playing"
+                logString += "started playing";
             }
 
             // Print console log message
@@ -1549,6 +1533,11 @@
 
         }
 
+        /**
+         * Changes the play-pause button according to the state of the music source's playing
+         * state
+         * 
+         */ 
         function spotifyCheckPlayPauseState() {
             let spotifyMusicSource = document.getElementById('spotifyMusicSource');
             let playPauseButton = document.getElementById('spotifyPlayButton');
@@ -1561,6 +1550,10 @@
             }
         }
 
+        /**
+         * Triggers a sound effect for the TV being opened and turns off sound from 
+         * Spotify
+         */ 
         function tvLoadPrep () {
             let spotifyMusicSource = document.getElementById('spotifyMusicSource');
 
@@ -1572,18 +1565,10 @@
             }
         }
 
-        // function collapseInformationBar() {
-        //     let informationBar = document.getElementById('informationBar');
-        //     let screenContents = document.getElementById('screenContents');
-
-        //     informationBar.classList.add('collapsed');
-        //     informationBar.style.fontSize = "0pt";
-        //     screenContents.style.height = '92%';
-        //     screenContents.style.top = '0%';
-
-        //     showInformationBar = false;
-        // }
-
+        /**
+         * Loads the list of tasks into the Tasks app
+         * 
+         */ 
         function loadTaskLists() {
             let taskListCollection = document.getElementById('taskListCollection');
 
@@ -1592,6 +1577,7 @@
             // https://stackoverflow.com/questions/7480020/for-in-loop-with-string-array-outputs-indices
             for (list of savedLists) {
                 console.log("Loading " + list.name + " to task list");
+                // Create a button for each
                 htmlString += "<tr> <td class='selectionListBlock' onclick='viewTasks(\"" + list.name + "\")'> "
                     + "<span class='taskListName'>" + list.name + "</span>"
                     + "</td> </tr>";
@@ -1600,6 +1586,11 @@
             taskListCollection.innerHTML = htmlString;
         }
 
+        /**
+         * Displays all items associated with a Task on the left side of the 
+         * Tasks app
+         * 
+         */ 
         function viewTasks(listName) {
             let taskChecklist = document.getElementById('currentTaskListTable');
             let currentTaskListTableContainer = document.getElementById('currentTaskListTableContainer');
@@ -1618,9 +1609,12 @@
             for (item of list.list) {
                 console.log("Loading " + item.name + " to task checklist");
                 
+                // Replace quotes in a field with an HTML representation
                 let itemNameInHTML = "" + item.name;
                 itemNameInHTML = itemNameInHTML.replace("'", "&apos;").replace('"', "&quot;");
                 
+                // Create a block with the task information. 
+                // Data input to a displayed item currently does not update
                 htmlString += "<tr> <td class='selectionListBlock'> "
                     + "<input class='taskChecklistCheck' type='checkbox' value='checked'";
 
@@ -1632,15 +1626,21 @@
                     + "</td> </tr>";
             }
 
+
             taskChecklist.innerHTML = htmlString;
 
             currentTaskListTableContainer.style.display = 'block';
             taskAddItemButton.style.display = 'block';
         }
 
+        /**
+         * Adds a saveable item to a task list
+         * 
+         */ 
         function addTaskItem(taskListName) {
             let taskChecklist = document.getElementById('currentTaskListTable');
 
+            // Get the task list this item belongs to
             for (i of savedLists) {
                 if (i.name == taskListName) {
                     list = i;
@@ -1652,11 +1652,14 @@
 
             let htmlString = "";
 
-            console.log("Adding a new task to " + list.name + " to task checklist");
+
+            console.log("Adding a new task " + list.name + " to task checklist");
             
+            // Replace quotes with HTML special characters
             let listNameInHTML = "" + list.name;
             listNameInHTML.replace("'", "&apos;").replace('"', "&quot;");
             
+            // Display necessary controls and toggles
             htmlString += "<tr> <td class='selectionListBlock'> "
                 + "<input class='taskChecklistCheck' type='checkbox' disabled>"
                 + "<input class='taskChecklistItem' type='text' value='New Item'>"
@@ -1668,14 +1671,18 @@
             taskChecklist.innerHTML += htmlString;
         }
 
+        /**
+         * Saves a user-created task list entry. The checklist state defaults to false.
+         */ 
         function saveTaskItem(listName, object) {
             let taskChecklist = document.getElementById(listName);
+            // Get the input box which holds the name.
             let nameElement = object.parentElement.getElementsByClassName('taskChecklistItem');
             nameElement = nameElement[0].value;
             
 
             // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox
-            
+            // Get the selected list
             for (i in savedLists) {
                 if (savedLists[i].name == listName) {
                     list = savedLists[i];
@@ -1685,26 +1692,36 @@
 
             console.log("List " + list.name);
 
+            // Check if the item is already on the list
             for (item of list.list) {
                 if (item.name == nameElement) {
+                    // Abort saving if it is
                     alert(nameElement + " is already on " + listName + ".");
                     return;
                 } 
             }
 
+            // Add the item to the task list
             list.list.push({name: nameElement, isChecked: false});
 
+            // Display the updated task list
             viewTasks(document.getElementById('currentTaskListName').innerText);
         }
 
+        /**
+         * Display the list of timers in the Timer app.
+         * 
+         */ 
         function loadTimerLists() {
             let timerListCollection = document.getElementById('timerListCollection');
 
             let htmlString = "";
 
+            // Get each timer from the list of saved timers
             for (timer of savedTimers) {
                 console.log("Loading " + timer.name + " to timer list");
 
+                // Replace quotes with their HTML special characters
                 let timerNameInHTML = "" + timer.name;
                 timerNameInHTML = timerNameInHTML.replace("'", "&apos;").replace('"', "&quot;");
 
@@ -1716,6 +1733,9 @@
             timerListCollection.innerHTML = htmlString;
         }
 
+        /**
+         * Displays the timer selected by the user and its controls.
+         */ 
         function viewTimer(timerName) {
             let timerData = document.getElementById('currentTimer');
             let currentTimerName = document.getElementById('currentTimerName');
@@ -1724,26 +1744,33 @@
 
             console.log("Getting timer data for " + timerName);
 
+            // Returns the requested timer's object
             var timer = savedTimers.find(timer => timer.name === timerName);
 
             console.log("Timer " + timer.name);
 
+            // Set the name of the timer on the left side
             currentTimerName.innerText = timerName;
-
 
             let htmlString = "";
 
+            // Set up the clock layout
             htmlString += "<span class='timerClock'> : </span>";
             htmlString += "<button class='timerStartButton' onclick='startTimer(\"" + timer.name + "\", this);' "
                             + "title='Start the Timer'>Start Timer</button>";
             
             currentTimerInformationContainer.innerHTML = htmlString;
+            // Set the time remaining using the HTML elements we just created.
             timerDisplay = (currentTimerInformationContainer.getElementsByClassName('timerClock'))[0]
 
             setTimerDisplay(timer, timerDisplay);
 
         }
 
+        /**
+         * Starts a setInterval for the timer activated by the user, and sets the 
+         * timer display based on the progress made on the timer.
+         */ 
         function startTimer(timerName, buttonObject) {
             let timer = savedTimers.find(timer => timer.name === timerName);
 
@@ -1753,32 +1780,38 @@
 
             timer.timeRemaining = (timer.minutes * 60) + timer.seconds;
 
-            // https://www.w3schools.com/jsref/met_win_setinterval.asp
+            // For ClearInterval: https://www.w3schools.com/jsref/met_win_setinterval.asp
             const timerId = setInterval( () =>  {
-                
+                                    // Subtract 1 second and update the timer
                                     timer.timeRemaining -= 1;
                                     setTimerDisplay(timer, timerDisplay);
 
+                                    // Timer ending procedure.
                                     if (timer.timeRemaining == 0) {
 
                                         let alarm = document.getElementById('timerAlarm');
                                         
+                                        // Plays an audio clip to indicate the end of the timer
                                         alarm.play();
                                         console.log("Timer: " + timer.name + " finished");
-                                        // alert(timer.name + " has rang!");
-
+                                        
+                                        // Changes the time remaining back to the original time
                                         resetTimer(timer, timerDisplay, timerId);
                                     }
 
 
                                 }, 1000);
-
-            buttonObject.setAttribute("onclick", "resetTimer(timer, " + timerId + ")");                  
+            
+            // The "Start Timer" button now resets the timer (somewhat buggy at the moment).
+            buttonObject.setAttribute("onclick", "resetTimer(timer, timerDisplay, " + timerId + ")");                  
 
             console.log("Timer: " + timer.name + " started");
 
         }
 
+        /**
+         * Sets the currently displayed timer based on the time remaining on that timer
+         */ 
         function setTimerDisplay(timer, timerDisplay) {
             let newSeconds = timer.timeRemaining % 60;
             let newMinutes = Math.floor(timer.timeRemaining / 60);
@@ -1786,6 +1819,9 @@
             timerDisplay.innerText = newMinutes.toString() + " : " + newSeconds.toString().padStart(2, '0');
         }
 
+        /**
+         * Resets the displayed time.
+         */ 
         function resetTimer(timer, timerDisplay, timerId) {
             clearInterval(timerId);
 
