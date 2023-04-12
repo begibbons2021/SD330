@@ -1,0 +1,1 @@
+Hello! This is an example document for what happens if you use special characters or spaces inside the name of a file.

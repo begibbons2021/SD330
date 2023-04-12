@@ -1,1 +1,154 @@
-<h1>Hello World</h1>
+<!DOCTYPE html>
+
+<html lang = 'en-US'>
+    
+    <head>
+        <meta charset="utf-8">
+        <title> Welcome to Brendan's GitHub Page </title>
+
+        <style> 
+            :root {
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+                background-image: url('https://www.publicdomainpictures.net/pictures/50000/velka/sunset-background-1371188975Z2h.jpg');
+                image-rendering: crisp-edges;
+                
+                color: #ffffff
+            }
+
+
+            header {
+                line-height: 50%;
+            }
+
+            #introduction {
+                display: flex;
+                flex-direction: row;
+
+                padding: 1%;
+            }
+
+            #introductionText {
+                width: 70%;
+                margin-right: 5%;
+
+                font-size: larger;
+            }
+
+            #portraitFrame {
+                aspect-ratio: 3/4;
+                width: clamp(64px, 30%, 256px);
+                text-align: right;
+            }
+
+            #portrait {
+                width: 100%;
+                aspect-ratio: 3/4;
+                border-bottom: .25rem solid rgb(9, 28, 34);
+            }
+
+            #files {
+                width: 100%;
+            }
+
+
+            .fileBox {
+                background-color: rgb(9, 28, 34);
+                color: #fefefe;
+                margin-bottom: 16px;
+                padding: 1%;
+            }
+
+            .pageName > a {
+                font-size: larger;
+                color: inherit;
+            }
+
+            .pageLink > a {
+                font-size: smaller;
+                color:rgb(179, 179, 179)
+            }
+
+            #signature {
+                position: relative;
+                
+                bottom: 0;
+                left: 0;
+                right: 0;
+
+                margin-top: 48px;
+                text-align: center;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <h3>Welcome to</h3>
+            <h1>Brendan's GitHub Page!</h1>
+        </header>
+
+        <main>
+            <section id='introduction'>
+                <div id='introductionText'>
+                    <p>Thank you for taking the time to look at my GitHub page! </p>
+                    <p>The following contents is an list of links to all subdirectories of the page. 
+                        Click on a link to navigate to it.</p>
+                </div>
+                
+                <div id="portraitFrame">
+                    <img id='portrait' src='img/index/brendan_portrait_whitebg.png' alt='Portrait of Brendan Gibbons'>
+                </div>
+            </section>
+            
+            
+
+            <section id='pageList'>
+                <br>
+                <table id='files'>
+
+                </table>
+            </section>
+
+            <footer id='signature'>
+                <hr>
+                <span> &copy; Brendan Gibbons - 4/11/23 </span>
+            </footer>
+
+            <script>
+                fileList();
+
+                async function fileList() {
+                    const response = await fetch(new Request("https://api.github.com/repos/begibbons2021/SD330/contents/"));
+                    const data = await response.json();
+
+                    let htmlString = "";
+                    for (let file of data) {
+                        let fname = file.name;
+                        let ftype = file.type;
+                        fpath = "https://begibbons2021.github.io/SD330/" + fname;
+
+                        htmlString += "<tr> <td class='fileBox'>";
+                        htmlString += "<p class='pageName'> <a href='" + encodeURI(fpath) + "'>" + fname;
+                        
+                        if (ftype == 'dir') {
+                            htmlString += " <small>(directory)</small>";
+                        }
+
+                        htmlString += "<p class='pageLink'>" + fpath;
+                        htmlString += "</td> </tr>";
+                    }
+
+                    console.log(htmlString);
+
+                    document.getElementById('files').innerHTML = htmlString;
+                }
+                
+            </script>
+
+        </main>
+
+    </body>
+
+</html>
