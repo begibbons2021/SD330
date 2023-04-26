@@ -1,0 +1,87 @@
+{
+    "Course": [
+        {
+            "courseId": 1,
+            "name": "System Design",
+            "department": "CMPT",
+            "courseNum": 330,
+            "credits": 3,
+            "year": 2023,
+            "semester": "Spring",
+            "professor": "Tokash, Andrew"
+        },
+        {
+            "courseId": 2,
+            "name": "Introduction to Cybersecurity",
+            "department": "CMPT",
+            "courseNum": 416,
+            "credits": 4,
+            "year": 2023,
+            "semester": "Spring",
+            "professor": "Foti, Dominick"
+        },
+        {
+            "courseId": 3,
+            "name": "Discrete Mathematics",
+            "department": "MATH",
+            "courseNum": 205,
+            "credits": 3,
+            "year": 2022,
+            "semester": "Spring",
+            "professor": "McGrail, Tracey"
+        },
+        {
+            "courseId": 4,
+            "name": "Artificial Intelligence",
+            "department": "CMPT",
+            "courseNum": 404,
+            "credits": 3,
+            "year": 2023,
+            "semester": "Fall",
+            "professor": "Gormanly, Brian"
+        },
+        {
+            "courseId": 5,
+            "name": "Ethics",
+            "department": "PHIL",
+            "courseNum": 200,
+            "credits": 3,
+            "year": 2023,
+            "semester": "Summer"
+        }
+    ],
+    "Textbook": [
+        {
+            "ISBN-13": 9781119547259,
+            "name": "Interaction Design: Beyond Human-Computer Interaction",
+            "edition": "5",
+            "author":"Sharp, Helen",
+            "publisher":"Wiley",
+            "courseId": 1
+        },
+        {
+            "ISBN-13": 9781119736257,
+            "name": "CompTIA Security+ Study Guide: Exam SY0-601",
+            "edition": "8",
+            "author": "Chapple, Mike",
+            "publisher": "Wiley",
+            "courseId": 2
+        },
+        {
+            "ISBN-13": 9780192801999,
+            "name": "Kant: A Very Short Introduction",
+            "edition": "Revised Edition",
+            "author": "Scruton, Roger",
+            "publisher": "Oxford Press",
+            "courseId": 5
+        }, 
+        {
+            "ISBN-13": 9781519526113,
+            "name": "On Interpretation",
+            "edition": "2015",
+            "author": "Aristotle",
+            "publisher": "CreateSpace",
+            "courseId": 5
+        }
+    ]
+}
