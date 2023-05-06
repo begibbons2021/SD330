@@ -135,38 +135,61 @@ button:hover {
 .landingInformationBox {
     margin: 1rem 0 1rem 0;
     
-    display: flex;
-    flex-direction: row;
+
     vertical-align: middle;
 
-    height: 250px;
-    width: 100%;
+    height: 200px;
+    width: inherit;
 
     background-color: #b31b1b;
     color: #fefefe;
     text-shadow: black;
 }
 
-.landingInformationBox > .textBox {
-    width: 75%;
-}
-
-.landingInformationBox > .imageBox {
-    width: 25%;
-}
-
-.landingInformationBox > .left {
-    text-align: left;
-
-    margin-left: 1rem;
+.landingInformationBoxLayout {
+    width: inherit;
+    height: inherit;
     
-    width: fit-content;
+    display: grid;
+    justify-content: space-between;
+
+    vertical-align: middle;
+    margin: 0 1rem 0 1rem;
 }
 
-.landingInformationBox>.right {
+.landingInformationBoxLayout.left {
+    grid-template-columns: 70% 25%;
+}
+
+.landingInformationBoxLayout.right {
+    grid-template-columns: 25% 70%;
     text-align: right;
+}
 
-    margin-right: 1rem;
+.landingInformationBox > .textBox {
 
-    width: fit-content;
+}
+
+.imageBox {
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* image-rendering: optimizeQuality; */
+}
+
+#textbooksOnDesk.imageBox {
+
+    background-image: url("https://images.pexels.com/photos/1438044/pexels-photo-1438044.jpeg");
+}
+
+#blanketStudiousStudent.imageBox{
+    background-image: url("https://images.pexels.com/photos/4498093/pexels-photo-4498093.jpeg");
+}
+
+#studentsStudying.imageBox {
+    background-image: url("https://images.pexels.com/photos/6146970/pexels-photo-6146970.jpeg");
 }
