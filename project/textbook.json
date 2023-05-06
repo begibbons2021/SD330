@@ -47,7 +47,28 @@
             "courseNum": 200,
             "credits": 3,
             "year": 2023,
-            "semester": "Summer"
+            "semester": "Summer",
+            "professor": null
+        },
+        {
+            "courseId": 6,
+            "name": "Computer Forensics",
+            "department": "CMPT",
+            "courseNum": 421,
+            "credits": 4,
+            "year": 2023,
+            "semester": "Fall",
+            "professor":"Foti, Dominick"
+        },
+        {
+            "courseId": 7,
+            "name": "Data Communications",
+            "department": "CMPT",
+            "courseNum": 306,
+            "credits": 4,
+            "year": 2023,
+            "semester": "Fall",
+            "professor":"Tokash, Andrew"
         }
     ],
     "Textbook": [
@@ -82,6 +103,39 @@
             "author": "Aristotle",
             "publisher": "CreateSpace",
             "courseId": 5
+        },
+        {
+            "ISBN-13": 9781943153787,
+            "name": "Business Data Communications and IT Infrastructures",
+            "edition": "3.0",
+            "author": "Agrawal, Manish",
+            "publisher": "Prospect Press",
+            "courseId": 7
+        }, 
+        {
+            "ISBN-13": 9781284184761,
+            "name": "Essentials of Discrete Mathematics",
+            "edition": "4",
+            "author": "Hunter, David J.",
+            "publisher": "Jones and Bartlett Learning",
+            "courseId": 3
+        },
+        {
+            "ISBN-13": 9780071798686,
+            "name": "Incident Response & Computer Forensics", 
+            "edition": "3",
+            "author": "Luttgens, Jason T.",
+            "publisher":"McGraw Hill Education",
+            "courseId": 6
+        },
+        {
+            "ISBN-13": 9781692995706,
+            "name": "Artificial Intelligence: Learning automation skills with Python",
+            "edition": "2019", 
+            "author": "Baker, Chris",
+            "publisher": null,
+            "courseId": 4
         }
+
     ]
 }
