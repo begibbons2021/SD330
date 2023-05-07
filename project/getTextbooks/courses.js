@@ -12,7 +12,6 @@
  */
 
 var courseInformation;
-onload();
 
 async function onload() {
     courseInformation = await getCourseData();
@@ -36,11 +35,7 @@ function fillYears() {
             years.push(year);
             yearSelect.innerHTML += '<option value="' +  year + '">' + year + '</option>';
         }
-
-        console.log(course);
     }
-
-    console.log(years)
 
     // for (data in courseInformation)
 }
@@ -52,18 +47,25 @@ function setSemesters() {
     departmentSelect = document.getElementById("departmentSelect");
     courseSelect = document.getElementById("courseSelect");
 
+    resetCourseDisplay();
+
+    lookupButton = document.getElementById("lookupButton");
+    lookupButton.setAttribute("disabled", "");
+
+    semesterSelect.selectedIndex = 0;
+
+    departmentSelect.innerHTML = '<option value="">----</option>';
+    departmentSelect.setAttribute("disabled", "");
+
+    courseSelect.innerHTML = '<option value="">--------------------------------</option>';
+    courseSelect.setAttribute("disabled", "");
+
     /* https://ricardometring.com/getting-the-value-of-a-select-in-javascript*/
     if (yearSelect.options[yearSelect.selectedIndex].value != '') {
         semesterSelect.removeAttribute("disabled");
     }
     else {
         semesterSelect.setAttribute("disabled", "");
-
-        departmentSelect.innerHTML = '<option value="">----</option>';
-        departmentSelect.setAttribute("disabled", "");
-
-        courseSelect.innerHTML = '<option value="">--------------------------------</option>';
-        courseSelect.setAttribute("disabled", "");
     }
 }
 
@@ -72,7 +74,14 @@ function setDepartments() {
     departmentSelect = document.getElementById("departmentSelect");
     courseSelect = document.getElementById("courseSelect");
 
+    resetCourseDisplay();
+
+    lookupButton = document.getElementById("lookupButton");
+    lookupButton.setAttribute("disabled", "");
+
     departmentSelect.innerHTML = '<option value="">----</option>';
+    courseSelect.innerHTML = '<option value="">--------------------------------</option>';
+    courseSelect.setAttribute("disabled", "");
 
     /* https://ricardometring.com/getting-the-value-of-a-select-in-javascript*/
     if (semesterSelect.options[semesterSelect.selectedIndex].value != '') {
@@ -90,8 +99,6 @@ function setDepartments() {
     else {
         departmentSelect.setAttribute("disabled", "");
 
-        courseSelect.innerHTML = '<option value="">--------------------------------</option>';
-        courseSelect.setAttribute("disabled", "");
     }
 
 }
@@ -102,7 +109,13 @@ function setCourses() {
     departmentSelect = document.getElementById("departmentSelect");
     courseSelect = document.getElementById("courseSelect");
 
+    resetCourseDisplay();
+
+    lookupButton = document.getElementById("lookupButton");
+    lookupButton.setAttribute("disabled", "");
+
     courseSelect.innerHTML = '<option value="">--------------------------------</option>';
+    courseSelect.setAttribute("disabled", "");
 
     /* https://ricardometring.com/getting-the-value-of-a-select-in-javascript*/
     if (departmentSelect.options[departmentSelect.selectedIndex].value != '') {
@@ -114,16 +127,14 @@ function setCourses() {
             semester = semesterSelect.options[semesterSelect.selectedIndex].value;
             department = departmentSelect.options[departmentSelect.selectedIndex].value;
 
-            console.log(year + " " + semester + " " + department)
-
             if (course.year == year 
                     && course.semester == semester
                     && course.department == department) {
                 courseId = course.courseId;
-                console.log(courseId);
+
                 if (!courses.includes(courseId)) {
                     courses.push(courseId);
-                    courseName = department + course.courseNum + " " + course.section +  " - " + course.name; 
+                    courseName = course.department + course.courseNum + " " + course.section +  " - " + course.name; 
                     courseSelect.innerHTML += '<option value="' + courseId + '">' + courseName + '</option>';
                 }
     
@@ -144,4 +155,64 @@ function setCourses() {
         courseSelect.setAttribute("disabled", "");
     }
 
+}
+
+function displayCourseInfo() {
+    courseSelect = document.getElementById("courseSelect");
+
+    lookupButton = document.getElementById("lookupButton");
+
+    courseId = courseSelect.options[courseSelect.selectedIndex].value;
+    /* https://ricardometring.com/getting-the-value-of-a-select-in-javascript */
+    if (courseId != '') {
+        let courseData = courseInformation.Course.find(course => courseId == course.courseId);
+ 
+        courseNameDisplay.innerText = courseData.name;
+        if (courseData.professor != undefined && courseData.professor != null) {
+            courseProfessorDisplay.innerText = courseData.professor;
+        }
+
+        courseDepartmentDisplay.innerText = courseData.department;
+        courseNumDisplay.innerText = courseData.courseNum;
+        courseSectionNumDisplay.innerText = courseData.section;
+
+        courseSemesterDisplay.innerText = courseData.semester + " " + courseData.year;
+
+        lookupButton.removeAttribute("disabled");
+    }
+    else {
+        resetCourseDisplay();
+
+        lookupButton.setAttribute("disabled", "");
+    }
+
+}
+
+function resetCourseDisplay() {
+    courseNameDisplay = document.getElementById("courseNameDisplay");
+    courseProfessorDisplay = document.getElementById("courseProfessorDisplay");
+    courseDepartmentDisplay = document.getElementById("courseDepartmentDisplay");
+    courseNumDisplay = document.getElementById("courseNumDisplay");
+    courseSectionNumDisplay = document.getElementById("courseSectionNumDisplay");
+    courseSemesterDisplay = document.getElementById("courseSemesterDisplay");
+
+    courseNameDisplay.innerText = "No Course Selected";
+    courseProfessorDisplay.innerText = "";
+
+    courseDepartmentDisplay.innerText = "";
+    courseNumDisplay.innerText = "";
+    courseSectionNumDisplay.innerText = "";
+
+    courseSemesterDisplay.innerText = "";
+
+}
+
+function textbookLookup() {
+    courseSelect = document.getElementById("courseSelect");
+
+    let courseId = courseSelect.options[courseSelect.selectedIndex].value;
+
+    console.log("Searching for textbooks for CourseID " + courseId);
+
+    window.location.href = "textbooks.html?courseId=" + encodeURIComponent(courseId);
 }
