@@ -66,32 +66,32 @@
 
                         <div class="selectionBox">
                             <label for="yearSelect">Year</label>
-                            <select name="year" id="yearSelect">
+                            <select name="year" id="yearSelect" onchange="setSemesters();">
                                 <option value="">----</option>
                             </select>
                         </div>
 
                         <div class="selectionBox">
                             <label for="semesterSelect">Semester</label>
-                            <select name="semester" id="semesterSelect" value="">
+                            <select name="semester" id="semesterSelect" disabled onchange="setDepartments();">
                                 <option value="">------</option>
-                                <option value="winter">Winter</option>
-                                <option value="spring">Spring</option>
-                                <option value="summer">Summer</option>
-                                <option value="fall">Fall</option>
+                                <option value="Winter">Winter</option>
+                                <option value="Spring">Spring</option>
+                                <option value="Summer">Summer</option>
+                                <option value="Fall">Fall</option>
                             </select>
                         </div>
 
                         <div class="selectionBox">
                             <label for="departmentSelect">Department</label>
-                            <select name="department" id="departmentSelect">
+                            <select name="department" id="departmentSelect" disabled onchange="setCourses();">
                                 <option value="">----</option>
                             </select>
                         </div>
 
                         <div class="selectionBox">
                             <label for="courseSelect">Course</label>
-                            <select name="course" id="courseSelect">
+                            <select name="course" id="courseSelect" disabled>
                                 <option value="">--------------------------------</option>
                             </select>
                         </div>

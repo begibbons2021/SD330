@@ -273,8 +273,18 @@ select {
 
 select:hover {
     background-color: #cf9191;
-    border: 2px solid #f07b7b;
+    border-color: #f07b7b;
     transition: all .2s ease-out;
+}
+
+select:disabled {
+    border-color: #cfcfcf;
+    background-color: #fefefe;
+}
+
+select:disabled:hover {
+    cursor: default;
+
 }
 
 select:active {
@@ -286,16 +296,16 @@ option {
 }
 
 #yearSelect {
-    width: 6ch;
+    width: 8ch;
 }
 
 #semesterSelect {
-    width: 9ch;
+    width: 10ch;
     /*https://webflow.com/feature/control-width-of-text-elements-by-character-count-using-ch-unit*/
 }
 
 #departmentSelect {
-    width: 6ch;
+    width: 8ch;
 }
 
 #courseSelect {
