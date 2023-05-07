@@ -1,4 +1,4 @@
-/**
+/*
  * Brendan Gibbons
  * CMPT 330 111
  * Professor Tokash
@@ -11,13 +11,24 @@
  * 
  */
 
+/**
+ * Holds information on the list of courses currently in the database.
+ */
 var courseInformation;
 
+/**
+ * Activates upon loading the page and sets initial variables and fields
+ */
 async function onload() {
     courseInformation = await getCourseData();
     fillYears();
 }
 
+/**
+ * Retrieves initial textbook data from GitHub
+ * 
+ * @returns The JSON object containing all textbook information
+ */
 async function getCourseData() {
     const apiCall = await fetch(new Request('https://begibbons2021.github.io/SD330/project/getTextbooks/textbook.json'));
     const apiData = await apiCall.json();
@@ -25,22 +36,29 @@ async function getCourseData() {
     return apiData;
 }
 
+/**
+ * Sets options for years in the form
+ * 
+ */
 function fillYears() {
     yearSelect = document.getElementById("yearSelect");
 
     years = []
-    for (course of courseInformation.Course) { 
+    for (course of courseInformation.Course) {
         year = course.year;
         if (!years.includes(year)) {
             years.push(year);
-            yearSelect.innerHTML += '<option value="' +  year + '">' + year + '</option>';
+            yearSelect.innerHTML += '<option value="' + year + '">' + year + '</option>';
         }
     }
 
     // for (data in courseInformation)
 }
 
-
+/**
+ * Sets option availability for semesters in the form
+ * 
+ */
 function setSemesters() {
     yearSelect = document.getElementById("yearSelect");
     semesterSelect = document.getElementById("semesterSelect");
@@ -69,6 +87,10 @@ function setSemesters() {
     }
 }
 
+/**
+ * Sets options and option availability for departments in the form
+ * 
+ */
 function setDepartments() {
     semesterSelect = document.getElementById("semesterSelect");
     departmentSelect = document.getElementById("departmentSelect");
@@ -103,6 +125,10 @@ function setDepartments() {
 
 }
 
+/**
+ * Sets options and option availability for courses in the form
+ * 
+ */
 function setCourses() {
     yearSelect = document.getElementById("yearSelect");
     semesterSelect = document.getElementById("semesterSelect");
@@ -119,7 +145,7 @@ function setCourses() {
 
     /* https://ricardometring.com/getting-the-value-of-a-select-in-javascript*/
     if (departmentSelect.options[departmentSelect.selectedIndex].value != '') {
-        
+
 
         courses = []
         for (course of courseInformation.Course) {
@@ -127,17 +153,17 @@ function setCourses() {
             semester = semesterSelect.options[semesterSelect.selectedIndex].value;
             department = departmentSelect.options[departmentSelect.selectedIndex].value;
 
-            if (course.year == year 
-                    && course.semester == semester
-                    && course.department == department) {
+            if (course.year == year
+                && course.semester == semester
+                && course.department == department) {
                 courseId = course.courseId;
 
                 if (!courses.includes(courseId)) {
                     courses.push(courseId);
-                    courseName = course.department + course.courseNum + " " + course.section +  " - " + course.name; 
+                    courseName = course.department + course.courseNum + " " + course.section + " - " + course.name;
                     courseSelect.innerHTML += '<option value="' + courseId + '">' + courseName + '</option>';
                 }
-    
+
             }
         }
 
@@ -149,7 +175,7 @@ function setCourses() {
             courseSelect.innerHTML = '<option value="">No Courses Are Being Offered</option>';
         }
 
-        
+
     }
     else {
         courseSelect.setAttribute("disabled", "");
@@ -157,6 +183,13 @@ function setCourses() {
 
 }
 
+/**
+ * Displays the information for the currently selected course using its course Id.
+ * If no course is selected, this calls resetCourseDisplay.
+ * 
+ * @see resetCourseDisplay
+ * 
+ */
 function displayCourseInfo() {
     courseSelect = document.getElementById("courseSelect");
 
@@ -166,7 +199,7 @@ function displayCourseInfo() {
     /* https://ricardometring.com/getting-the-value-of-a-select-in-javascript */
     if (courseId != '') {
         let courseData = courseInformation.Course.find(course => courseId == course.courseId);
- 
+
         courseNameDisplay.innerText = courseData.name;
         if (courseData.professor != undefined && courseData.professor != null) {
             courseProfessorDisplay.innerText = courseData.professor;
@@ -188,6 +221,10 @@ function displayCourseInfo() {
 
 }
 
+/**
+ * Sets all course selection fields to blank values
+ * 
+ */
 function resetCourseDisplay() {
     courseNameDisplay = document.getElementById("courseNameDisplay");
     courseProfessorDisplay = document.getElementById("courseProfessorDisplay");
@@ -207,6 +244,11 @@ function resetCourseDisplay() {
 
 }
 
+/**
+ * Redirects the user to textbooks.html with the course ID of the currently
+ * selected course as a GET argument.
+ * 
+ */
 function textbookLookup() {
     courseSelect = document.getElementById("courseSelect");
 

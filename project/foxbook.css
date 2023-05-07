@@ -1,3 +1,14 @@
+/*
+ * Brendan Gibbons 
+ * CMPT 330 111
+ * Professor Tokash
+ * 
+ * May 9, 2023
+ * FoxBooks CSS Stylesheet
+ */
+
+/* General Page CSS (Controls, Common Display Boxes, etc.) */
+
 body {
     margin: 0;
     padding: 0;
@@ -68,10 +79,14 @@ header > nav {
     grid-template-columns: 100%;
 
     min-height: 100dvh;
+    min-height: 100vh; /* Fallback for older browsers which do not support dynamic viewports */
+
+    /* https://matthewjamestaylor.com/bottom-footer */
 }
 
 #siteContent > header {
     width: 100%;
+    background-color: #fefefe;
 }
 
 #siteContent > main {
@@ -86,30 +101,6 @@ header > nav {
 #siteContent > footer {
     padding: 3rem;
     background-color: #cfcfcf;
-}
-
-.landingDisplayBox {
-    display: flex;
-    flex-direction: column;
-    
-    
-    width: 100%;
-    height: 575px;
-    align-items: center;
-    vertical-align: middle;
-    text-align: center;
-
-    background-image: url('https://www.fmsp.com/wp-content/uploads/2018/02/Marist-College-Student-Center-Rotunda-_1.jpg');
-    background-position: center;
-    background-size:cover;
-    justify-content: space-between;
-}
-
-.landingDisplayBox > button {
-    width: 20%;
-    font-size: clamp(.25rem, 14pt, 4rem);
-
-
 }
 
 button {
@@ -141,13 +132,144 @@ button:disabled {
     background-color: #fefefe;
 }
 
-button:disabled:hover {
-    cursor: pointer;
+button:hover:disabled {
+    cursor: default;
 }
 
 button:disabled:active {
     background-color: #cfcfcf;
     cursor: not-allowed;
+}
+
+.breadcrumbNav {
+    list-style-type: none;
+    margin: 1rem 0rem 1rem 0rem;
+}
+
+.breadcrumbNav>* {
+    display: inline-block;
+    font-size: large;
+    list-style-type: none;
+}
+
+.breadcrumbNav>*:last-child {
+    font-size: x-large;
+    font-weight: 600;
+}
+
+.breadcrumbNav a::after {
+    content: ">";
+    padding-inline-start: 4px;
+}
+
+
+.imageBox {
+    /* Utilized for decorative images which do not need alternate text */
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    image-rendering: optimizeQuality;
+}
+
+.disclaimerBox {
+    margin: 0rem 2rem 2rem 2rem;
+    padding: 1rem;
+    background-color: #b31b1b;
+    color: #fefefe;
+    text-align: center;
+
+    border-radius: 8px;
+    box-shadow: rgba(16, 16, 16, 0.685);
+}
+
+.disclaimerBox a {
+    color: #ffe1e1;
+}
+
+.instructionBox {
+    padding: 1rem;
+    background-color: #cfcfcf;
+    text-align: center;
+
+    border-radius: 8px;
+}
+
+.disclaimerTitle {
+    font-size: larger;
+    font-weight: 600;
+}
+
+label {
+    padding: 4px;
+}
+
+select {
+    font-family: inherit;
+    font-size: inherit;
+
+    border-radius: 8px;
+    padding: 4px;
+    border: 2px solid #b31b1b;
+}
+
+select:hover {
+    background-color: #cf9191;
+    border-color: #f07b7b;
+    transition: all .2s ease-out;
+
+    cursor: pointer;
+}
+
+select:disabled {
+    border-color: #cfcfcf;
+    background-color: #fefefe;
+}
+
+select:disabled:hover {
+    cursor: default;
+
+}
+
+select:disabled:active {
+    background-color: #cfcfcf;
+    cursor: not-allowed;
+}
+
+select:active {
+    background-color: #cf9191;
+}
+
+option {
+    background-color: #fefefe;
+}
+
+/* Landing/Home Page */
+
+.landingDisplayBox {
+    display: flex;
+    flex-direction: column;
+    
+    
+    width: 100%;
+    height: 575px;
+    align-items: center;
+    vertical-align: middle;
+    text-align: center;
+
+    background-image: url('https://www.fmsp.com/wp-content/uploads/2018/02/Marist-College-Student-Center-Rotunda-_1.jpg');
+    background-position: center;
+    background-size:cover;
+    /* Space-between maximizes the space between the elements in the div */
+    justify-content: space-between;
+}
+
+.landingDisplayBox > button {
+    width: 20%;
+    font-size: clamp(.25rem, 14pt, 4rem);
 }
 
 .landingBackdropText {
@@ -195,23 +317,7 @@ button:disabled:active {
     text-align: right;
 }
 
-.landingInformationBox > .textBox {
-
-}
-
-.imageBox {
-    width: 100%;
-    height: 100%;
-    vertical-align: middle;
-
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    /* image-rendering: optimizeQuality; */
-}
-
 #textbooksOnDesk.imageBox {
-
     background-image: url("https://images.pexels.com/photos/1438044/pexels-photo-1438044.jpeg");
 }
 
@@ -223,57 +329,9 @@ button:disabled:active {
     background-image: url("https://images.pexels.com/photos/6146970/pexels-photo-6146970.jpeg");
 }
 
-.breadcrumbNav {
-    list-style-type: none;
-    margin: 1rem 0rem 1rem 0rem;
-}
 
-.breadcrumbNav > * {
-    display: inline-block;
-    font-size: large;
-    list-style-type: none;
-}
 
-.breadcrumbNav > *:last-child {
-    font-size: x-large;
-    font-weight: 600;
-}
-
-.breadcrumbNav a::after {
-    content: ">";
-    padding-inline-start: 4px;
-}
-
-.breadcrumbNav .crumb {
-
-}
-
-.selectForm {
-    text-align: center;
-}
-
-.disclaimerBox {
-    margin: 0rem 2rem 2rem 2rem;
-    padding: 1rem;
-    background-color: #cf9191;
-    text-align: center;
-
-    border-radius: 8px;
-    box-shadow: rgba(16, 16, 16, 0.685);
-}
-
-.instructionBox {
-    padding: 1rem;
-    background-color: #cfcfcf;
-    text-align: center;
-
-    border-radius: 8px;
-}
-
-.disclaimerTitle {
-    font-size: larger;
-    font-weight: 600;
-}
+/* Textbook search and display */
 
 .selectionBox {
     display: grid;
@@ -282,50 +340,6 @@ button:disabled:active {
     margin: 1rem 2rem 1rem 2rem;
     font-size: large;
     text-anchor: middle;
-}
-
-label {
-    padding: 4px;
-}
-
-select {
-    font-family: inherit;
-    font-size: inherit;
-
-    border-radius: 8px;
-    padding: 4px;
-    border: 2px solid #b31b1b;
-}
-
-select:hover {
-    background-color: #cf9191;
-    border-color: #f07b7b;
-    transition: all .2s ease-out;
-
-    cursor: pointer;
-}
-
-select:disabled {
-    border-color: #cfcfcf;
-    background-color: #fefefe;
-}
-
-select:disabled:hover {
-    cursor: default;
-
-}
-
-select:disabled:active {
-    background-color: #cfcfcf;
-    cursor: not-allowed;
-}
-
-select:active {
-    background-color: #cf9191;
-}
-
-option {
-    background-color: #fefefe;
 }
 
 #yearSelect {
@@ -345,8 +359,19 @@ option {
     width: 32ch;
 }
 
+
 .formView {
+    display: grid;
+    grid-template-columns: auto;
+    align-content: center;
+    justify-content: center;
+
     margin: 2rem;
+}
+
+.formView > form {
+    display: grid;
+    justify-content: center;
 }
 
 #courseTextbookList {
@@ -364,3 +389,4 @@ option {
     background-color: #cfcfcf;
     border-radius: 8px;
 }
+

@@ -1,8 +1,31 @@
+/*
+ * Brendan Gibbons
+ * CMPT 330 111
+ * Professor Tokash
+ * 
+ * May 9, 2023
+ * 
+ * courses.json
+ * 
+ * Handles field selection responses for courses.html
+ * 
+ */
 
-
+/**
+ * Holds information on the list of courses currently in the database.
+ */
 var courseInformation;
+
+/**
+ * Holds the course Id which is being searched
+ */
 var courseId; 
 
+/**
+ * Activates upon loading the page and sets initial variables and fields.
+ * It also calls @function getTextbooks() to display the textbooks associated 
+ * with the course.
+ */
 async function onload() {
     courseInformation = await getCourseData();
     courseId = new URLSearchParams(document.location.search).get("courseId");
@@ -13,6 +36,11 @@ async function onload() {
     getTextbooks();
 }
 
+/**
+ * Retrieves initial textbook data from GitHub
+ * 
+ * @returns The JSON object containing all textbook information
+ */
 async function getCourseData() {
     const apiCall = await fetch(new Request('https://begibbons2021.github.io/SD330/project/getTextbooks/textbook.json'));
     const apiData = await apiCall.json();
@@ -20,6 +48,14 @@ async function getCourseData() {
     return apiData;
 }
 
+/**
+ * Checks if the course Id provided as parameter is a valid course ID and sets
+ * the breadcrumb field to the Department, Course Number, Section Number, and 
+ * course name of the course if it exists. 
+ * 
+ * Otherwise, the user is redirected back to the course selection page.
+ * 
+ */
 function checkCourseId() {
     course = courseInformation.Course.find(course => course.courseId == courseId);
 
@@ -40,6 +76,10 @@ function checkCourseId() {
     }
 }
 
+/**
+ * Displays all textbooks which belong to the courseId selected by the user.
+ * 
+ */
 function getTextbooks() {
     books = courseInformation.Textbook.map(book => {
                                                     if (book.courseId == courseId) {

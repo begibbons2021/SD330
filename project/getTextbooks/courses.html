@@ -1,5 +1,16 @@
 <!DOCTYPE html>
 
+<!--
+    Brendan Gibbons
+    CMPT 330 111
+    Professor Tokash
+
+    May 9, 2023
+
+    FoxBooks Course Lookup Page
+
+-->
+
 <html lang='en-us'>
 
 <head>
@@ -9,6 +20,11 @@
     </title>
     <link rel="stylesheet" type="text/css" href="../foxbook.css">
     <link rel="stylesheet" href="https://use.typekit.net/rcy0wfn.css">
+    <link rel="icon" href="https://www.marist.edu/marist-theme/images/favicon.ico">
+    
+    <!--
+        Retrieves Javascript from an external file
+        -->
     <script type="text/javascript" src="courses.js"></script>
 
 </head>
@@ -49,12 +65,18 @@
                         complete or accurate. Please refer to
                         <a href='https://marist.bncollege.com/course-material/course-finder' target=".blank">
                             this page</a>
-                         for an up-to-date and accurate list of textbooks available for your courses.
+                        for an up-to-date and accurate list of textbooks available for your courses.
                     </p>
                 </div>
 
                 <div id="selectionForm" class="formView">
-                    <form action="../index.html" method="GET">
+                    <form>
+
+                        <!--
+                            All of the fields are filled with default values so that options are not selected 
+                            by default. Semester is also filled with all four options it can possibly have since
+                            those are static, unlike departments, years, and courses.
+                            -->
 
                         <div class="instructionBox">
                             <p>
@@ -95,6 +117,10 @@
                             </select>
                         </div>
 
+                        <!--
+                            Displays all course information in plaintext so the user can confirm the class
+                            they selected is correct.
+                            -->
                         <div id="classInformationDisplay">
                             <p>
                                 <span>Course Name: </span><span id="courseNameDisplay">No Course Selected </span><br>
@@ -109,7 +135,10 @@
                             </p>
                         </div>
 
-                        <button type="button" id="lookupButton" onclick="textbookLookup();" disabled>Show My Textbooks!</button>
+                        <!-- Rather than using the default submit options, we use a custom submit script since 
+                            we only need to pass the course ID to textbooks.html. -->
+                        <button type="button" id="lookupButton" onclick="textbookLookup();" disabled>Show My
+                            Textbooks!</button>
                     </form>
                 </div>
 
@@ -121,7 +150,8 @@
         <footer>
             <div id="maristFooterIcon">
                 <a href="https://www.marist.edu" target=".blank">
-                    <img src="https://www.marist.edu/marist-theme/images/marist-new-navigation-logo.png" alt="Marist College Logo">
+                    <img src="https://www.marist.edu/marist-theme/images/marist-new-navigation-logo.png"
+                        alt="Marist College Logo">
                 </a>
             </div>
             <span id="maristContactInformation">
@@ -131,9 +161,11 @@
                 <span>
                     &copy; 2023 Brendan Gibbons<br>
                 </span>
-                <p>This website is not affiliated with Marist College. The Marist College logo(s), name, and all
-                    other trademarks are property of Marist College. All rights are reserved to their owners.</p>
-            
+                <p>
+                    This website is not affiliated with Marist College. The Marist College logo(s), name, and all
+                    other trademarks are property of Marist College. All rights are reserved to their owners.
+                </p>
+
             </div>
         </footer>
 
